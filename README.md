@@ -18,10 +18,10 @@ Este exercício tem como objetivo praticar os conceitos fundamentais da Programa
 - [Funcionalidades Extra](#funcionalidades-extra)
 
 ## Objetivo Principal
-Desenvolver um jogo RPG de texto no arquivo `rpg.py`, contendo todas as classes pré existentes e:
+Desenvolver um jogo RPG de texto no arquivo `rpg.py`, contendo:
+- Todas as classes pré existentes;
 - Introdução a história do jogo, evidenciando o tema escolhido; 
-- Menus para interação com o usuário;
-- Pelos menos duas das cinco [Funcionalidades Extra](#funcionalidades-extra).
+- Menus para interação com o usuário.
 
 ## Como Fazer um Pull Request
 
@@ -29,7 +29,7 @@ Para solucionar estes exercícios, siga os passos abaixo para fazer um Pull Requ
 
 1.  **Clone o Repositório**: No seu terminal, clone o repositório para a sua máquina local:
     ```bash
-    git clone https://github.com/LeCEDUP/RPyG.git
+    git clone https://github.com/LeCEDUP/2CID-RPyG.git
     ```
 
 2.  **Crie uma Nova Branch**: Navegue até o diretório do projeto e crie uma nova branch para suas alterações:
