@@ -1,3 +1,5 @@
+from random import randint
+
 class Personagem:
     def __init__(self, nome, vida, ataque, defesa):
         self.nome = nome
@@ -6,7 +8,7 @@ class Personagem:
         self.defesa = defesa
 
     def atacar(self, alvo):
-        dano = max(0, self.ataque - alvo.defesa)
+        dano = max(0, self.ataque - alvo.defesa) + randint(0, self.ataque)
         alvo.receber_dano(dano)
         print(f"{self.nome} atacou {alvo.nome} causando {dano} de dano.")
 
