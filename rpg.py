@@ -33,3 +33,20 @@ def atacar(self, alvo):
         print(f"{self.nome} ataca {alvo.nome} causando {dano} de dano.")
         alvo.receber_dano(dano)
 
+ def receber_dano(self, dano):
+        self.vida -= dano
+        print(f"{self.nome} recebeu {dano} de dano. Vida atual: {self.vida}")
+
+    def esta_vivo(self):
+        return self.vida > 0
+
+    def equipar_item(self, item):
+        if hasattr(item, "bonus_ataque"):
+            self.ataque += item.bonus_ataque
+        if hasattr(item, "bonus_defesa"):
+            self.defesa += item.bonus_defesa
+        print(f"{self.nome} equipou {item.nome}!")
+
+    def ganhar_experiencia(self, exp):
+        print(f"{self.nome} ganhou {exp} de experiência!")
+
