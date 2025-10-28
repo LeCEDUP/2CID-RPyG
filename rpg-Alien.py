@@ -48,4 +48,13 @@ def evento_item(tripulante, rota):
         Arma("Rifle automático RMC F903WE", "Uma arma improvisada, eficaz contra o alien.", 12),
         Item("Kit Médico", "Restaura 40 de vida."),
         Armadura("Armadura M4X", "Protege contra ataques ácidos e projéteis.", 6)
-    
+    ]
+item = random.choice(possiveis_itens)
+    print(f"\nNo {rota_descricao(rota)}, {tripulante.nome} encontrou um {item.nome}!")
+    escolha = input("Deseja pegar o item? (s/n): ").lower()
+    if escolha == "s":
+        tripulante.inventario.append(item)
+        print(f"{item.nome} adicionado ao inventário.")
+    else:
+        print("Você deixou o item para trás...")
+    return True
