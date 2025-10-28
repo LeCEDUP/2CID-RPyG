@@ -53,6 +53,14 @@ espada = Arma("Espada Longa", "Uma espada afiada.", 10)
 escudo = Armadura("Escudo de Ferro", "Um escudo resistente.", 5)
 pocao_vida = Item("Poção de Vida", "Restaura 30 de vida.")
 
+meu_heroi.inventario.append(espada)
+meu_heroi.inventario.append(escudo)
+meu_heroi.inventario.append(pocao_vida)
+print(f"{meu_heroi.nome} encontrou uma {espada.nome}, um {escudo.nome} e uma {pocao_vida.nome}.")
+
+meu_heroi.equipar_item(espada)
+meu_heroi.equipar_item(escudo)
+
 
 
 
