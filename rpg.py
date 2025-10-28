@@ -32,3 +32,4 @@ Bounty_Hunter.inventario.append(Arma)
 Bounty_Hunter.inventario.append(Armadura)
 Bounty_Hunter.inventario.append(Item)
 print(f"{heroi.nome} encontrou uma {Arma.Big_Bertha}, um {Armadura.Traje_Pretor} e uma {Item.RedBull}.")
+
