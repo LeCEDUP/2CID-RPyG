@@ -160,6 +160,10 @@ def aventura():
     hero.inventario.append(pocao_vida)
     narrar(f"{hero.nome} encontrou uma {espada.nome}, um {escudo.nome} e uma {pocao_vida.nome}!")
 
+# Equipar itens
+    hero.equipar_item(espada)
+    hero.equipar_item(escudo)
+
 
 
 
