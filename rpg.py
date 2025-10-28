@@ -35,4 +35,13 @@ if heroi.esta_vivo():
     heroi.ganhar_experiencia(60)
     print(f"Vida atual: {heroi.vida}")
 else:
-    print(f"{heroi.nome} foi derrubado pelo {bandido.nome}...")    
+    print(f"{heroi.nome} foi derrubado pelo {bandido.nome}...") 
+
+print("\n--- PAUSA NO SALOON ---")
+if whisky heroi.inventario:
+    heroi.vida += 40
+    heroi.inventario.remove(whisky)
+    print(f"{heroi.nome} tomou um {whisky.nome} e recuperou energias. vida atual: {heroi.vida}")
+    
+
+
