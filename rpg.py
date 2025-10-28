@@ -31,6 +31,7 @@ class Mago(Heroi):
         else:
             print(f"{self.nome} não tem mana suficiente para usar Bola de Fogo!")
 
+
 print("Escolha a classe do seu herói:")
 print("1 - Guerreiro")
 print("2 - Mago")
@@ -43,9 +44,10 @@ if escolha_classe == '1':
 else:
     meu_heroi = Mago(nome_heroi)
 
-meu_heroi = Heroi("Arqueiro", 120, 20, 6)
-vampiro = Monstro("Vampiro", 30, 8, 2, "Pequeno")
+
+vampiro = Monstro("Vampiro", 160, 8, 2, "Pequeno")
 troll = Monstro("Troll", 160, 22, 8, "Grande")
+
 
 espada = Arma("Espada Longa", "Uma espada afiada.", 10)
 escudo = Armadura("Escudo de Ferro", "Um escudo resistente.", 5)
@@ -64,47 +66,46 @@ def menu():
     print('----------------------')
     print('---Apocalipse Zumbi---')
     print('----------------------')
-    print('Nas terras esquecidas de Eldarion, onde antigas ruínas ainda sussurram histórias de batalhas e glória, monstros voltaram a despertar das sombras. Aldeias inteiras desapareceram, e o medo se espalha como uma névoa espessa.')
-    print('Em meio ao caos, um grupo de guerreiros se ergue, unidos pelo destino e pela promessa de restaurar a paz. Mas antes de alcançar a redenção, precisarão enfrentar criaturas poderosas, segredos ocultos e a própria escuridão que habita seus corações.')
+    print('Nas terras esquecidas de Eldarion, onde antigas ruínas ainda sussurram histórias de batalhas e glória, monstros voltaram a despertar das sombras.')
+    print('Aldeias inteiras desapareceram, e o medo se espalha como uma névoa espessa. Em meio ao caos, um grupo de guerreiros se ergue, unidos pelo destino e pela promessa de restaurar a paz.')
     print('----------------------')
 
-   
     print('---Início da aventura---')
-
-    meu_heroi.inventario.append(espada)
-    meu_heroi.inventario.append(escudo)
-    meu_heroi.inventario.append(pocao_vida)
     print(f"{meu_heroi.nome} encontrou uma {espada.nome}, um {escudo.nome} e uma {pocao_vida.nome}.")
 
-
+    
     print("\n---Batalha contra o Vampiro---")
     while meu_heroi.esta_vivo() and vampiro.esta_vivo():
-        escolha = input("Atacar? [s/n]")
-        if escolha.lower() == 's':
+        escolha = input("Atacar ou usar habilidade? [a/h] ")
+        if escolha.lower() == 'a':
             meu_heroi.atacar(vampiro)
-            if vampiro.esta_vivo():
-                vampiro.atacar(meu_heroi)
-        else:
-            print("Obrigada por jogar!")
-            return
+        elif escolha.lower() == 'h':
+            meu_heroi.habilidade(vampiro)
+
+        if vampiro.esta_vivo():
+            vampiro.atacar(meu_heroi)
+            print(f"Vida de {meu_heroi.nome}: {meu_heroi.vida}")
+
+        # Uso automático de poção se vida < 50
+        if pocao_vida in meu_heroi.inventario and meu_heroi.vida < 50:
+            print(f"{meu_heroi.nome} usou {pocao_vida.nome} automaticamente!")
+            meu_heroi.vida += 30
+            if meu_heroi.vida > meu_heroi.vida:  
+                meu_heroi.vida = meu_heroi.vida
+            meu_heroi.inventario.remove(pocao_vida)
+            print(f"Vida atual: {meu_heroi.vida}")
 
     if meu_heroi.esta_vivo():
-       print(f"{meu_heroi.nome} derrotou o {vampiro.nome}!")
-       meu_heroi.ganhar_experiencia(50)
-       print(f"Vida de {meu_heroi.nome}: {meu_heroi.vida}")
-       print(f"Inventário de {meu_heroi.nome}: {[item.nome for item in meu_heroi.inventario]}")
+        print(f"\n{meu_heroi.nome} derrotou o {vampiro.nome}!")
+        meu_heroi.ganhar_experiencia(50)
+        print(f"Vida de {meu_heroi.nome}: {meu_heroi.vida}")
 
-       print("\n--- Herói usa poção ---")
-    if pocao_vida in meu_heroi.inventario:
-      meu_heroi.vida += 30
-      meu_heroi.inventario.remove(pocao_vida)
-      print(f"{meu_heroi.nome} usou {pocao_vida.nome}. Vida atual: {meu_heroi.vida}")
-
+    
     if meu_heroi.esta_vivo():
         print("\n---Nova batalha contra o Troll---")
         while meu_heroi.esta_vivo() and troll.esta_vivo():
-            escolha = input("Atacar? [s/n]")
-            if escolha == 's':
+            escolha = input("Atacar? [s/n] ")
+            if escolha.lower() == 's':
                 meu_heroi.atacar(troll)
                 if troll.esta_vivo():
                     troll.atacar(meu_heroi)
@@ -112,10 +113,13 @@ def menu():
                 print("Obrigada por jogar!")
                 return
 
-
-
+        if meu_heroi.esta_vivo():
+            print(f"\n{meu_heroi.nome} derrotou o {troll.nome}!")
+        else:
+            print(f"\nO {troll.nome} derrotou {meu_heroi.nome}...")
 
 menu()
+
 
 
 
