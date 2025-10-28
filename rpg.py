@@ -61,6 +61,15 @@ print(f"{meu_heroi.nome} encontrou uma {espada.nome}, um {escudo.nome} e uma {po
 meu_heroi.equipar_item(espada)
 meu_heroi.equipar_item(escudo)
 
+def menu():
+    print('----------------------')
+    print('---Apocalipse Zumbi---')
+    print('----------------------')
+    print('Nas terras esquecidas de Eldarion, onde antigas ruínas ainda sussurram histórias de batalhas e glória, monstros voltaram a despertar das sombras.')
+    print('Aldeias inteiras desapareceram, e o medo se espalha como uma névoa espessa.')
+    print('Em meio ao caos, um grupo de guerreiros se ergue, unidos pelo destino e pela promessa de restaurar a paz')
+    print('----------------------')
+
 
 
 
