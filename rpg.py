@@ -70,6 +70,21 @@ def menu():
     print('Em meio ao caos, um grupo de guerreiros se ergue, unidos pelo destino e pela promessa de restaurar a paz')
     print('----------------------')
 
+    print('---Início da aventura---')
+    print(f"{meu_heroi.nome} encontrou uma {espada.nome}, um {escudo.nome} e uma {pocao_vida.nome}.")
+
+    
+    print("\n---Batalha contra o Vampiro---")
+    while meu_heroi.esta_vivo() and vampiro.esta_vivo():
+        escolha = input("Atacar ou usar habilidade? [a/h] ")
+        if escolha.lower() == 'a':
+            meu_heroi.atacar(vampiro)
+        elif escolha.lower() == 'h':
+            meu_heroi.habilidade(vampiro)
+
+        if vampiro.esta_vivo():
+            vampiro.atacar(meu_heroi)
+            print(f"Vida de {meu_heroi.nome}: {meu_heroi.vida}")
 
 
 
