@@ -58,3 +58,13 @@ item = random.choice(possiveis_itens)
     else:
         print("Você deixou o item para trás...")
     return True
+
+def evento_combate(tripulante, rota)
+    inimigos = [
+        monstro("facehugger", 25, 8, 1, "pequeno"),
+        Monstro("Xenomorfo", 80, 20, 5, "Médio"),
+        Monstro("Rainha Alien", 180, 30, 8, "Gigante")
+    ]
+    inimigo = random.choice(inimigos)
+    print(f"\n⚠ ALERTA: {tripulante.nome} encontrou um {inimigo.nome} no {rota_descricao(rota)}!")
+    return batalha(tripulante, inimigo) 
