@@ -108,6 +108,10 @@ def menu():
                 if troll.esta_vivo():
                     troll.atacar(meu_heroi)
 
+        else:
+            print("Obrigada por jogar!")
+            return
+
 
 
 
