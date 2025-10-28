@@ -50,3 +50,10 @@ def atacar(self, alvo):
     def ganhar_experiencia(self, exp):
         print(f"{self.nome} ganhou {exp} de experiência!")
 
+class Monstro:
+    def __init__(self, nome, vida, ataque, defesa, tipo):
+        self.nome = nome
+        self.vida = vida
+        self.ataque = ataque
+        self.defesa = defesa
+        self.tipo = tipo
