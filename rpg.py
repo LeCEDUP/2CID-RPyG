@@ -35,3 +35,21 @@ bosses = [
     Monstro("CHEFE: Imperador Sith", 400, 50, 25, "Sith")
 ]
 
+# Loja 
+loja = [
+    Arma("Blaster", "Arma laser básica", 12),
+    Arma("Rifle Laser", "Rifle de precisão", 18),
+    Arma("Sabre Luz", "Espada de energia Jedi", 25),
+    Arma("Lançador", "Arma pesada destrutiva", 35),
+    Armadura("Traje", "Proteção leve", 8),
+    Armadura("Armadura", "Armadura média", 15),
+    Armadura("Mandaloriana", "Armadura pesada", 25),
+    Item("RedBull", "Energético +40HP"),
+    Item("Super RedBull", "Super energético +80HP"),
+    Item("Kit Médico", "Cura completa")
+]
+
+precos = [60, 120, 200, 300, 50, 100, 180, 30, 60, 150]
+
+# Itens iniciais
+heroi.inventario.extend([Item("RedBull", "Energético"), Arma("Blaster", "Arma inicial", 8)])
