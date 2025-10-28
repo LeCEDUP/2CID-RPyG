@@ -135,3 +135,73 @@ def usar_item():
             print(f"✅ Usou {item.nome}!")
     except:
         print("❌ Inválido!")
+    
+while heroi.esta_vivo():
+    print(f"\n📍 {planeta_atual} === MISSÃO {nivel_missao + 1} ===")
+    print("1. Caçar Recompensa")
+    print("2. Loja")
+    print("3. Status")
+    print("4. Desafiar Chefe")
+   
+    op = input("Opção: ")
+   
+    if op == "1":
+        dificuldade = planetas[planeta_atual]["dificuldade"] - 1
+        if nivel_missao < len(inimigos[dificuldade]):
+            inimigo = inimigos[dificuldade][nivel_missao]
+            print(f"\n🎯 ALVO: {inimigo.nome}")
+           
+            while heroi.esta_vivo() and inimigo.esta_vivo():
+                print(f"\n{heroi.nome}: {heroi.vida}HP")
+                print(f"{inimigo.nome}: {inimigo.vida}HP")
+               
+                acao = input("1-Atacar 2-Item: ")
+               
+                if acao == "1":
+                    heroi.atacar(inimigo)
+                    if inimigo.esta_vivo():
+                        inimigo.atacar(heroi)
+                elif acao == "2":
+                    usar_item()
+                    if inimigo.esta_vivo():
+                        inimigo.atacar(heroi)
+           
+            if heroi.esta_vivo():
+                recompensa = int(100 * planetas[planeta_atual]["recompensa"])
+                drhokens += recompensa
+                heroi.ganhar_experiencia(50 * planetas[planeta_atual]["dificuldade"])
+                print(f"✅ MISSÃO CUMPRIDA! +{recompensa}💰")
+                nivel_missao += 1
+               
+    elif op == "2":
+        print(f"\n🛒 LOJA • {drhokens}💰")
+        for i, item in enumerate(loja):
+            print(f"{i+1}. {item.nome} - {precos[i]}💰")
+       
+        try:
+            compra = int(input("Comprar: ")) - 1
+            if 0 <= compra < len(loja):
+                if drhokens >= precos[compra]:
+                    drhokens -= precos[compra]
+                    heroi.inventario.append(loja[compra])
+                    print(f"✅ Comprou {loja[compra].nome}!")
+                else:
+                    print("❌ Drhokens insuficientes!")
+        except:
+            print("❌ Inválido!")
+           
+    elif op == "3":
+        print(f"\n⭐ {heroi.nome}")
+        print(f"❤️ Vida: {heroi.vida}")
+        print(f"⚔️ Ataque: {heroi.ataque}")
+        print(f"🛡️ Defesa: {heroi.defesa}")
+        print(f"⭐ Nível: {heroi.nivel}")
+        print(f"💰 Drhokens: {drhokens}")
+        print(f"📍 Planeta: {planeta_atual}")
+        print(f"🎒 Itens: {[i.nome for i in heroi.inventario]}")
+       
+    elif op == "4":
+        if batalha_chefe():
+            print("🎉 DOMINOU ESTE PLANETA!")
+
+print(f"\n🎉 {heroi.nome} se tornou uma LENDA INTERGALÁCTICA!")
