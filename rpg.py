@@ -111,6 +111,13 @@ def menu():
         else:
             print("Obrigada por jogar!")
             return
+        
+        if meu_heroi.esta_vivo():
+            print(f"\n{meu_heroi.nome} derrotou o {troll.nome}!")
+        else:
+            print(f"\nO {troll.nome} derrotou {meu_heroi.nome}...")
+
+menu()
 
 
 
