@@ -26,6 +26,19 @@ def escolher_rota():
     rota = input("Escolha para onde ir (1, 2 ou 3): ")
     return rota
 
+def explorar(tripulante):
+    rota = escolher_rota()
+    eventos = ["combate", "item", "nada"]
+    evento = random.choice(eventos)
+
+    if evento == "combate":
+        return evento_combate(tripulante, rota)
+    elif evento == "item":
+        return evento_item(tripulante, rota)
+    else:
+        print(f"\n{tripulante,nome} não encontrou nada... apenas o som distante de algo rastejanado")
+        return true 
+
 def iniciar_jogo():
     nome_do_heroi = input('digite o nome do seu heroi')
     meu_heroi = heroi(nome_do_heroi, 100, 20, 10)
