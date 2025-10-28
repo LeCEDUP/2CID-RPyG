@@ -144,6 +144,12 @@ def batalha(hero, inimigo):
 def aventura():
     introducao()
 
+# Criando personagens
+    hero = Heroi("Barbie", 100, 15, 5)
+    pearl = Monstro("Pearl", 30, 8, 2, "Pequeno")
+    draculaura = Monstro("Draculaura", 200, 30, 10, "Grande")
+
+
 
 
 
