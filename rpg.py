@@ -1,6 +1,6 @@
 import random
 
-# --- Constantes (melhor para manter e ajustar valores do jogo) ---
+
 EXP_PARA_NIVEL = 20
 VIDA_BASE_HEROI = 100
 VIDA_POR_NIVEL = 20
@@ -9,7 +9,7 @@ DEFESA_BASE_HEROI = 5
 DANO_MAGIA_MIN = 15
 DANO_MAGIA_MAX = 25
 
-# --- Configurações de Monstros 
+
 CONFIG_MONSTROS = {
     "Pequeno": {"vida": 30, "ataque": 5, "defesa": 2, "exp_recompensa": 15, "chance_loot": 0.5},
     "Grande": {"vida": 60, "ataque": 12, "defesa": 5, "exp_recompensa": 30, "chance_loot": 0.7}
@@ -22,13 +22,13 @@ class Personagem:
     """Classe base para todos os seres vivos no jogo."""
     def __init__(self, nome, vida, ataque, defesa):
         self.nome = nome
-        self._vida_maxima = vida  # Propriedade interna para a vida máxima
+        self._vida_maxima = vida  
         self.vida = vida
         self.ataque = ataque
         self.defesa = defesa
 
     def atacar(self, alvo):
-        # Garante que o dano mínimo seja 1, para que ataques normais sempre causem algum impacto.
+        
         dano = max(1, self.ataque - alvo.defesa) 
         alvo.receber_dano(dano)
         print(f"⚔️ {self.nome} atacou {alvo.nome} causando {dano} de dano!")
@@ -44,7 +44,7 @@ class Personagem:
     def esta_vivo(self):
         return self.vida > 0
     
-    # Adicionando um método para exibir status de forma padronizada
+    
     def exibir_status(self):
         print(f"{self.nome} - Vida: {self.vida}/{self._vida_maxima}, Ataque: {self.ataque}, Defesa: {self.defesa}")
 
@@ -76,7 +76,7 @@ class Pocao(Item):
 # -------------------------
 class Heroi(Personagem):
     def __init__(self, nome):
-        # Usando as constantes
+        
         super().__init__(nome, vida=VIDA_BASE_HEROI, ataque=ATAQUE_BASE_HEROI, defesa=DEFESA_BASE_HEROI)
         self.nivel = 1
         self.experiencia = 0
@@ -96,8 +96,8 @@ class Heroi(Personagem):
 
     def subir_nivel(self):
         self.nivel += 1
-        self._vida_maxima = self.vida_maxima_atual # Atualiza a vida máxima
-        self.vida = self._vida_maxima # Cura completa ao subir de nível
+        self._vida_maxima = self.vida_maxima_atual 
+        self.vida = self._vida_maxima 
         self.ataque += 5
         self.defesa += 2
         print(f"🎉 **{self.nome} subiu para o nível {self.nivel}!** Status: +20 Vida Máx, +5 Ataque, +2 Defesa.")
@@ -105,18 +105,18 @@ class Heroi(Personagem):
     def equipar_item(self, item):
         """Simplificado: Itens são equipados/usados imediatamente e adicionados ao inventário se forem poções."""
         if isinstance(item, Arma):
-            # Adicionar lógica para 'desequipar' uma arma antiga seria uma melhoria futura.
+            
             self.ataque += item.bonus_ataque
             print(f"🗡️ {self.nome} equipou a arma {item.nome} (+{item.bonus_ataque} ataque)")
         elif isinstance(item, Armadura):
-            # Adicionar lógica para 'desequipar' uma armadura antiga seria uma melhoria futura.
+           
             self.defesa += item.bonus_defesa
             print(f"🛡️ {self.nome} equipou a armadura {item.nome} (+{item.bonus_defesa} defesa)")
         elif isinstance(item, Pocao):
             self.inventario.append(item)
             print(f"🧪 {self.nome} adicionou a poção {item.nome} ao inventário!")
         else:
-             # Adicionado para tratar itens que não são arma, armadura ou poção.
+             
              print(f"🎒 {self.nome} pegou o item {item.nome}!")
 
     def lancar_magia(self, alvo):
@@ -125,16 +125,16 @@ class Heroi(Personagem):
         print(f"✨ {self.nome} lançou magia em {alvo.nome} causando {dano} de dano!")
 
     def usar_pocao(self):
-        # Usa `next` com gerador para encontrar a primeira poção de forma mais eficiente
+        
         pocao = next((item for item in self.inventario if isinstance(item, Pocao)), None)
         
         if pocao:
             cura_aplicada = pocao.cura
             self.vida += cura_aplicada
             
-            # Garante que a vida não exceda a vida máxima atual
+            
             if self.vida > self.vida_maxima_atual:
-                cura_aplicada -= (self.vida - self.vida_maxima_atual) # Ajusta a cura se houve excesso
+                cura_aplicada -= (self.vida - self.vida_maxima_atual) 
                 self.vida = self.vida_maxima_atual
                 
             self.inventario.remove(pocao)
@@ -147,7 +147,7 @@ class Heroi(Personagem):
         super().exibir_status()
         print(f"Nível: {self.nivel} (XP: {self.experiencia}/{EXP_PARA_NIVEL})")
         
-        # Exibe o inventário (opcional)
+        
         poções_no_inv = [item.nome for item in self.inventario if isinstance(item, Pocao)]
         print(f"Inventário (Poções): {', '.join(poções_no_inv) if poções_no_inv else 'Vazio'}")
 
@@ -168,15 +168,15 @@ class Monstro(Personagem):
 
     def loot(self):
         if random.random() < self.chance_loot:
-            # Exemplo de loot
+            
             if self.tipo == "Pequeno":
-                 # Chance de um item básico
+                 
                 return random.choice([
                     Pocao("Poção de Cura Básica", "Restaura 20 de vida", 20),
                     Arma("Adaga Envelhecida", "Uma adaga de caça.", 2)
                 ])
             else:
-                 # Chance de um item melhor
+                 
                 return random.choice([
                     Pocao("Poção de Cura Forte", "Restaura 50 de vida", 50),
                     Armadura("Escudo Leve", "Um escudo simples.", 4)
@@ -201,7 +201,7 @@ def menu_batalha(heroi, monstro):
 
         escolha = input("Escolha: ")
         
-        # Variável para rastrear se uma ação de turno foi feita
+
         acao_feita = False
 
         if escolha == "1":
@@ -211,12 +211,11 @@ def menu_batalha(heroi, monstro):
             heroi.lancar_magia(monstro)
             acao_feita = True
         elif escolha == "3":
-            # Permite usar poção sem encerrar o turno, mas é melhor forçar a decisão
-            # Aqui, vou manter como uma ação que consome o turno.
+            
             heroi.usar_pocao()
             acao_feita = True
         elif escolha == "4":
-            heroi.exibir_status() # Já é chamado acima, mas se o usuário quiser detalhes.
+            heroi.exibir_status() 
             continue
         else:
             print("❌ Escolha inválida! Tente novamente.")
@@ -227,16 +226,16 @@ def menu_batalha(heroi, monstro):
             print("\n--- Turno do Monstro ---")
             monstro.atacar(heroi)
             
-    # Resultado da Batalha
+    
     print("-" * 30)
     if heroi.esta_vivo():
         print(f"\n🎉 **{heroi.nome} derrotou {monstro.nome}!**")
-        heroi.ganhar_experiencia(monstro.exp_recompensa) # Usa a recompensa do monstro
+        heroi.ganhar_experiencia(monstro.exp_recompensa) 
         
         loot = monstro.loot()
         if loot:
             print(f"🎁 {monstro.nome} dropou {loot.nome}!")
-            heroi.equipar_item(loot) # equipar_item adiciona a poção ao inventário
+            heroi.equipar_item(loot) 
     else:
         print("\n💀 Você foi derrotado. Fim de jogo.")
 
@@ -251,12 +250,12 @@ def main():
     nome_heroi = input("Digite o nome do seu herói: ")
     heroi = Heroi(nome_heroi)
 
-    # --- Setup Inicial ---
+    
     espada_inicial = Arma("Espada Curta", "Uma arma de iniciante.", 3)
     armadura_inicial = Armadura("Traje de Couro", "Proteção leve e flexível.", 1)
     pocao_inicial = Pocao("Poção de Iniciante", "Restaura 20 de vida", 20)
     
-    # Aprimoramento: Equipar itens e depois adicionar o restante ao inventário
+   
     heroi.equipar_item(espada_inicial)
     heroi.equipar_item(armadura_inicial)
     heroi.equipar_item(pocao_inicial) 
@@ -264,7 +263,7 @@ def main():
     print("\nStatus Inicial do Herói:")
     heroi.exibir_status()
 
-    # --- Sequência de Monstros (Ajustado para usar a config) ---
+    
     monstros_para_lutar = [
         Monstro("Goblin Patrulheiro", "Pequeno"), 
         Monstro("Orc Brutamontes", "Grande"),
