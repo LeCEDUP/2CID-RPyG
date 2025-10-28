@@ -164,6 +164,22 @@ def aventura():
     hero.equipar_item(espada)
     hero.equipar_item(escudo)
 
+    # Batalha 1
+    venceu = batalha(hero, pearl)
+    if not venceu:
+        return
+
+    # Batalha 2 - desafio final
+    venceu = batalha(hero, draculaura)
+    if venceu:
+        narrar(f"\n🌟 Parabéns, {hero.nome}! Você derrotou {draculaura.nome} e salvou GlitterVille!")
+        hero.ganhar_experiencia(200)
+    else:
+        narrar(f"\n☠️ {hero.nome} foi derrotada pelo {draculaura.nome}... As sombras venceram.")
+
+    print("\n--- 🎃 Fim da Aventura 🎃 ---\n")
+
+
 
 
 
