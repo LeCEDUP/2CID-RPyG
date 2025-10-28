@@ -149,6 +149,15 @@ def aventura():
     pearl = Monstro("Pearl", 30, 8, 2, "Pequeno")
     draculaura = Monstro("Draculaura", 200, 30, 10, "Grande")
 
+# Criando itens
+    espada = Arma("Gloss Hipergrudento", "Lipsuculento e letal.", 10)
+    escudo = Armadura("Protetor Térmico", "Um escudo rosa, mas poderoso.", 5)
+    pocao_vida = Item("Poção Rosa", "Restaura 30 de vida e um pouco de esperança."1)
+
+
+
+
+
 
 
 
