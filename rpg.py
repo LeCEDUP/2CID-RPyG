@@ -187,7 +187,7 @@ class Monstro(Personagem):
 # MENU DE BATALHA
 # -------------------------
 def menu_batalha(heroi, monstro):
-    print(f"\n\n*** ⚔️ Batalha contra {monstro.nome} ({monstro.tipo})! ⚔️ ***")
+    print(f"\n\n***Batalha contra {monstro.nome} ({monstro.tipo})!***")
     
     while heroi.esta_vivo() and monstro.esta_vivo():
         print("-" * 30)
@@ -229,7 +229,7 @@ def menu_batalha(heroi, monstro):
     
     print("-" * 30)
     if heroi.esta_vivo():
-        print(f"\n🎉 **{heroi.nome} derrotou {monstro.nome}!**")
+        print(f"\n🎉 **UUURUU {heroi.nome} derrotou {monstro.nome}!**")
         heroi.ganhar_experiencia(monstro.exp_recompensa) 
         
         loot = monstro.loot()
@@ -237,7 +237,7 @@ def menu_batalha(heroi, monstro):
             print(f"{monstro.nome} dropou {loot.nome}!")
             heroi.equipar_item(loot) 
     else:
-        print("\nVocê foi derrotado. Fim de jogo.")
+        print("\nOOOHH NOOO Você foi derrotado. Fim de jogo.")
 
 
 # -------------------------
