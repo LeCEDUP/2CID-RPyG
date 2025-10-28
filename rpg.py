@@ -31,15 +31,15 @@ class Personagem:
         
         dano = max(1, self.ataque - alvo.defesa) 
         alvo.receber_dano(dano)
-        print(f"⚔️ {self.nome} atacou {alvo.nome} causando {dano} de dano!")
+        print(f"{self.nome} atacou {alvo.nome} causando {dano} de dano!")
 
     def receber_dano(self, dano):
         self.vida -= dano
         if self.vida < 0:
             self.vida = 0
-        print(f"💔 {self.nome} recebeu {dano} de dano. Vida restante: {self.vida}.")
+        print(f"{self.nome} recebeu {dano} de dano. Vida restante: {self.vida}.")
         if self.vida <= 0:
-            print(f"💀 {self.nome} foi derrotado!")
+            print(f"{self.nome} foi derrotado!")
 
     def esta_vivo(self):
         return self.vida > 0
@@ -89,7 +89,7 @@ class Heroi(Personagem):
 
     def ganhar_experiencia(self, exp):
         self.experiencia += exp
-        print(f"🌟 {self.nome} ganhou {exp} de experiência! Total: {self.experiencia}/{EXP_PARA_NIVEL}.")
+        print(f"{self.nome} ganhou {exp} de experiência! Total: {self.experiencia}/{EXP_PARA_NIVEL}.")
         while self.experiencia >= EXP_PARA_NIVEL:
             self.experiencia -= EXP_PARA_NIVEL
             self.subir_nivel()
@@ -100,29 +100,29 @@ class Heroi(Personagem):
         self.vida = self._vida_maxima 
         self.ataque += 5
         self.defesa += 2
-        print(f"🎉 **{self.nome} subiu para o nível {self.nivel}!** Status: +20 Vida Máx, +5 Ataque, +2 Defesa.")
+        print(f"**{self.nome} subiu para o nível {self.nivel}!** Status: +20 Vida Máx, +5 Ataque, +2 Defesa.")
 
     def equipar_item(self, item):
         """Simplificado: Itens são equipados/usados imediatamente e adicionados ao inventário se forem poções."""
         if isinstance(item, Arma):
             
             self.ataque += item.bonus_ataque
-            print(f"🗡️ {self.nome} equipou a arma {item.nome} (+{item.bonus_ataque} ataque)")
+            print(f"{self.nome} equipou a arma {item.nome} (+{item.bonus_ataque} ataque)")
         elif isinstance(item, Armadura):
            
             self.defesa += item.bonus_defesa
-            print(f"🛡️ {self.nome} equipou a armadura {item.nome} (+{item.bonus_defesa} defesa)")
+            print(f"{self.nome} equipou a armadura {item.nome} (+{item.bonus_defesa} defesa)")
         elif isinstance(item, Pocao):
             self.inventario.append(item)
-            print(f"🧪 {self.nome} adicionou a poção {item.nome} ao inventário!")
+            print(f"{self.nome} adicionou a poção {item.nome} ao inventário!")
         else:
              
-             print(f"🎒 {self.nome} pegou o item {item.nome}!")
+             print(f"{self.nome} pegou o item {item.nome}!")
 
     def lancar_magia(self, alvo):
         dano = random.randint(DANO_MAGIA_MIN, DANO_MAGIA_MAX)
         alvo.receber_dano(dano)
-        print(f"✨ {self.nome} lançou magia em {alvo.nome} causando {dano} de dano!")
+        print(f"{self.nome} lançou magia em {alvo.nome} causando {dano} de dano!")
 
     def usar_pocao(self):
         
@@ -138,9 +138,9 @@ class Heroi(Personagem):
                 self.vida = self.vida_maxima_atual
                 
             self.inventario.remove(pocao)
-            print(f"💚 {self.nome} usou a poção {pocao.nome} e recuperou {cura_aplicada} de vida! ({self.vida}/{self.vida_maxima_atual})")
+            print(f"{self.nome} usou a poção {pocao.nome} e recuperou {cura_aplicada} de vida! ({self.vida}/{self.vida_maxima_atual})")
         else:
-            print("❌ Não há poções no inventário!")
+            print("Não há poções no inventário!")
             
     def exibir_status(self):
         """Sobrescreve para incluir Nível e XP."""
@@ -218,10 +218,10 @@ def menu_batalha(heroi, monstro):
             heroi.exibir_status() 
             continue
         else:
-            print("❌ Escolha inválida! Tente novamente.")
+            print("Escolha inválida! Tente novamente.")
             continue
         
-        # Turno do Monstro
+        
         if acao_feita and monstro.esta_vivo():
             print("\n--- Turno do Monstro ---")
             monstro.atacar(heroi)
@@ -234,10 +234,10 @@ def menu_batalha(heroi, monstro):
         
         loot = monstro.loot()
         if loot:
-            print(f"🎁 {monstro.nome} dropou {loot.nome}!")
+            print(f"{monstro.nome} dropou {loot.nome}!")
             heroi.equipar_item(loot) 
     else:
-        print("\n💀 Você foi derrotado. Fim de jogo.")
+        print("\nVocê foi derrotado. Fim de jogo.")
 
 
 # -------------------------
@@ -279,9 +279,9 @@ def main():
 
     print("\n" + "=" * 30)
     if heroi.esta_vivo():
-        print(f"🏆 Fim do Jogo! {heroi.nome} sobreviveu a todas as batalhas e chegou ao nível {heroi.nivel}.")
+        print(f"Fim do Jogo! {heroi.nome} sobreviveu a todas as batalhas e chegou ao nível {heroi.nivel}.")
     else:
-        print(f"💀 Jogo Encerrado. {heroi.nome} foi derrotado.")
+        print(f"Jogo Encerrado. {heroi.nome} foi derrotado.")
     print("=" * 30)
 
 if __name__ == "__main__":
