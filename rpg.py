@@ -178,6 +178,13 @@ def aventura():
         narrar(f"\n☠️ {hero.nome} foi derrotada pelo {draculaura.nome}... As sombras venceram.")
 
     print("\n--- 🎃 Fim da Aventura 🎃 ---\n")
+    
+# ========================
+# Início do jogo
+# ========================
+if __name__ == "__main__":
+    aventura()
+
 
 
 
