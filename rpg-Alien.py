@@ -68,3 +68,19 @@ def evento_combate(tripulante, rota)
     inimigo = random.choice(inimigos)
     print(f"\n⚠ ALERTA: {tripulante.nome} encontrou um {inimigo.nome} no {rota_descricao(rota)}!")
     return batalha(tripulante, inimigo) 
+
+def batalha(heroi, monstro):
+    print(f"\n--- Combate: {heroi.nome} vs {monstro.nome} ---")
+    while heroi.esta_vivo() and monstro.esta_vivo():
+        heroi.atacar(monstro)
+        time.sleep(1)
+        if monstro.esta_vivo():
+            monstro.atacar(heroi)
+            time.sleep(1)
+    if heroi.esta_vivo():
+        print(f"\n{heroi.nome} sobreviveu ao ataque do {monstro.nome}!")
+        heroi.ganhar_experiencia(50)
+        return True
+    else:
+        print(f"\nO {monstro.nome} matou {heroi.nome}. A missão terminou...")
+        return False
