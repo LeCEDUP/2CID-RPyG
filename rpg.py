@@ -86,6 +86,14 @@ def menu():
             vampiro.atacar(meu_heroi)
             print(f"Vida de {meu_heroi.nome}: {meu_heroi.vida}")
 
+        if pocao_vida in meu_heroi.inventario and meu_heroi.vida < 50:
+            print(f"{meu_heroi.nome} usou {pocao_vida.nome} automaticamente!")
+            meu_heroi.vida += 30
+            if meu_heroi.vida > meu_heroi.vida:  
+                meu_heroi.vida = meu_heroi.vida
+            meu_heroi.inventario.remove(pocao_vida)
+            print(f"Vida atual: {meu_heroi.vida}")
+
 
 
 
