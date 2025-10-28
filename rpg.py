@@ -110,3 +110,28 @@ def batalha_chefe():
         return True
     return False
 
+def usar_item():
+    itens_uso = [item for item in heroi.inventario if "RedBull" in item.nome or "Kit" in item.nome]
+   
+    if not itens_uso:
+        print("❌ Sem itens de cura!")
+        return
+   
+    print("\n🎒 Itens disponíveis:")
+    for i, item in enumerate(itens_uso):
+        print(f"{i+1}. {item.nome}")
+   
+    try:
+        escolha = int(input("Usar item: ")) - 1
+        if 0 <= escolha < len(itens_uso):
+            item = itens_uso[escolha]
+            if "Super" in item.nome:
+                heroi.vida += 80
+            elif "Kit" in item.nome:
+                heroi.vida = 100 + (heroi.nivel * 20)
+            else:
+                heroi.vida += 40
+            heroi.inventario.remove(item)
+            print(f"✅ Usou {item.nome}!")
+    except:
+        print("❌ Inválido!")
