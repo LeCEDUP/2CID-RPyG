@@ -154,6 +154,13 @@ def aventura():
     escudo = Armadura("Protetor Térmico", "Um escudo rosa, mas poderoso.", 5)
     pocao_vida = Item("Poção Rosa", "Restaura 30 de vida e um pouco de esperança."1)
 
+# Inventário inicial
+    hero.inventario.append(espada)
+    hero.inventario.append(escudo)
+    hero.inventario.append(pocao_vida)
+    narrar(f"{hero.nome} encontrou uma {espada.nome}, um {escudo.nome} e uma {pocao_vida.nome}!")
+
+
 
 
 
