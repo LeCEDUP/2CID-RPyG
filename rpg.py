@@ -28,3 +28,8 @@ class Heroi:
         self.defesa = defesa
         self.inventario = []
 
+def atacar(self, alvo):
+        dano = max(0, self.ataque - alvo.defesa)
+        print(f"{self.nome} ataca {alvo.nome} causando {dano} de dano.")
+        alvo.receber_dano(dano)
+
