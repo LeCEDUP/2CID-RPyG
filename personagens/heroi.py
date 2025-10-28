@@ -35,3 +35,20 @@ class Heroi(Personagem):
                 print(f"{item.nome} não pode ser equipado.")
         else:
             print(f"{self.nome} não possui {item.nome} no inventário.")
+
+            from heroi import Heroi
+from itens.arma import Arma
+from itens.armadura import Armadura
+
+meu_heroi = Heroi(nome="Nelson Pé-de-Rato", vida=150, ataque=100, defesa=30)
+
+espada = Arma(nome="draktar", bonus_ataque=25)
+armadura_couro = Armadura(nome="Armadura de pelgo", bonus_defesa=5)
+
+meu_heroi.inventario.append(espada)
+meu_heroi.inventario.append(armadura_couro)
+
+meu_heroi.equipar_item(espada)
+meu_heroi.equipar_item(armadura_couro)
+
+meu_heroi.ganhar_experiencia(250)
