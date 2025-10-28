@@ -12,6 +12,11 @@ class Guerreiro(Heroi):
         super().__init__(nome, vida=150, ataque=25, defesa=10)
         self.classe = "Guerreiro"
 
+def habilidade(self, inimigo):
+    dano = self.ataque * 1.5
+    inimigo.vida -= dano
+    print(f"{self.nome} usa Golpe Poderoso em {inimigo.nome}, causando {dano} de dano!")
+
 
 
 
