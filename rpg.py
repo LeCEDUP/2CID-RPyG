@@ -8,11 +8,11 @@ class Personagem:
         self.nome = nome
         self.vida = vida
         self.ataque = ataque
-        self.defesa = defesass
+        self.defesa = defesa  
 
     def atacar(self, alvo):
         dano = self.ataque - alvo.defesa
-        dano = max(dano, 0)  # não pode ser negativo
+        dano = max(dano, 0)  
         alvo.receber_dano(dano)
         print(f"{self.nome} atacou {alvo.nome} causando {dano} de dano!")
 
@@ -39,7 +39,8 @@ class Heroi(Personagem):
     def ganhar_experiencia(self, exp):
         self.experiencia += exp
         print(f"{self.nome} ganhou {exp} de experiência!")
-        if self.experiencia >= 20:
+        while self.experiencia >= 20:
+            self.experiencia -= 20
             self.subir_nivel()
 
     def subir_nivel(self):
@@ -47,7 +48,6 @@ class Heroi(Personagem):
         self.vida += 20
         self.ataque += 5
         self.defesa += 2
-        self.experiencia = 0
         print(f"{self.nome} subiu para o nível {self.nivel}!")
 
     def equipar_item(self, item):
@@ -140,17 +140,17 @@ def main():
     nome_heroi = input("Digite o nome do seu herói: ")
     heroi = Heroi(nome_heroi)
 
-    # Adicionando itens iniciais
+    # ADD ITENS INICIAIS
     espada = Arma("Espada de Ferro", "Uma espada básica.", 5)
     armadura = Armadura("Couraça Simples", "Proteção básica.", 3)
     heroi.inventario.extend([espada, armadura])
     heroi.equipar_item(espada)
     heroi.equipar_item(armadura)
 
-    # Criando um monstro
+    # CRIANDO MONSTRO
     goblin = Monstro("Goblin", "Pequeno")
 
-    # Menu de batalha
+    # MENU DE BATALHA
     menu_batalha(heroi, goblin)
 
 
