@@ -140,6 +140,5 @@ def jogo():
 
     print("\n--- Fim da Missão ---")
 
-# -------------------- EXECUÇÃO --------------------
 if __name__ == "__main__":
     jogo()
