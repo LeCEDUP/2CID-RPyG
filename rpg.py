@@ -94,6 +94,11 @@ def menu():
             meu_heroi.inventario.remove(pocao_vida)
             print(f"Vida atual: {meu_heroi.vida}")
 
+        if meu_heroi.esta_vivo():
+          print(f"\n{meu_heroi.nome} derrotou o {vampiro.nome}!")
+          meu_heroi.ganhar_experiencia(50)
+          print(f"Vida de {meu_heroi.nome}: {meu_heroi.vida}")
+
 
 
 
