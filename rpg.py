@@ -43,6 +43,16 @@ nome_heroi = input("Digite o nome do seu herói: ")
 if escolha_classe == '1':
     meu_heroi = Guerreiro(nome_heroi)
 else:
+    meu_heroi = Mago(nome_heroi)
+
+vampiro = Monstro("Vampiro", 160, 8, 2, "Pequeno")
+troll = Monstro("Troll", 160, 22, 8, "Grande")
+
+
+espada = Arma("Espada Longa", "Uma espada afiada.", 10)
+escudo = Armadura("Escudo de Ferro", "Um escudo resistente.", 5)
+pocao_vida = Item("Poção de Vida", "Restaura 30 de vida.")
+
 
 
 
