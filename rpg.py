@@ -97,4 +97,46 @@ def introducao():
     print("\n" + "=" * 60)
     time.sleep(1)
 
+# ========================
+# Função de batalha interativa
+# ========================
+def batalha(hero, inimigo):
+    narrar(f"\n--- ⚔️ Batalha contra {inimigo.nome} ---\n")
+    while hero.esta_vivo() and inimigo.esta_vivo():
+        # Turno do jogador
+        print(f"\nSua Vida: {hero.vida} | {inimigo.nome} Vida: {inimigo.vida}")
+        print("Escolha sua ação:")
+        print("1. Atacar")
+        print("2. Usar Poção")
+        escolha = input("> ")
+
+        if escolha == "1":
+            hero.atacar(inimigo)
+        elif escolha == "2":
+            pocoes = [item for item in hero.inventario if isinstance(item, Item) and "Poção" in item.nome]
+            if pocoes:
+                pocao = pocoes[0]
+                hero.vida += 30
+                hero.inventario.remove(pocao)
+                narrar(f"{hero.nome} usou {pocao.nome}. Vida atual: {hero.vida}")
+            else:
+                narrar("Você não tem poções!")
+                continue
+        else:
+            narrar("Escolha inválida!")
+            continue
+
+        # Turno do inimigo
+        if inimigo.esta_vivo():
+            inimigo.atacar(hero)
+
+    if hero.esta_vivo():
+        narrar(f"\n✨ {hero.nome} derrotou {inimigo.nome}! ✨")
+        hero.ganhar_experiencia(50)
+        return True
+    else:
+        narrar(f"\n💀 {hero.nome} foi derrotada por {inimigo.nome}... O brilho se apagou.")
+        return False
+
+
 
