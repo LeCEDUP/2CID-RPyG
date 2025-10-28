@@ -18,6 +18,14 @@ def criar_tripulante():
         print(f"\n{tripulante.nome} acorda da criossonia... algo está errado na nave Nostromo.")
         return tripulante   
 
+def escolher_rota():
+    print("\nVocê está em um corredor escuro da Nostromo. Há três rotas possíveis:")
+    print("1 - Laboratório de espécimes")
+    print("2 - Sala de máquinas")
+    print("3 - Cabine de comando")
+    rota = input("Escolha para onde ir (1, 2 ou 3): ")
+    return rota
+
 def iniciar_jogo():
     nome_do_heroi = input('digite o nome do seu heroi')
     meu_heroi = heroi(nome_do_heroi, 100, 20, 10)
@@ -27,3 +35,4 @@ def evento_item(tripulante, rota):
         Arma("Rifle automático RMC F903WE", "Uma arma improvisada, eficaz contra o alien.", 12),
         Item("Kit Médico", "Restaura 40 de vida."),
         Armadura("Armadura M4X", "Protege contra ataques ácidos e projéteis.", 6)
+    
