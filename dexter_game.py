@@ -206,4 +206,9 @@ def jogo():
         dexter.estado()
     else:
         pausa("\n💀 Dexter caiu — pela polícia, por seus demônios, ou pelo destino.")
+# ------------------------------
+# EXECUÇÃO
+# ------------------------------
+if __name__ == "__main__":
+    jogo()
 
