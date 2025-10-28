@@ -84,11 +84,11 @@ def narrar(texto, atraso=0.04):
 # ========================
 def introducao():
     print("=" * 60)
-    print("           🎃 SOMBRAS DE HALLOWEEN: O REINO ROSA EM PERIGO 🎃")
+    print("           🎃 AS BATALHA DAS HALLOWGIRLS 🎃")
     print("=" * 60)
     time.sleep(1.5)
 
-    narrar("\nÉ véspera de Halloween na cidade encantada de GlitterVille...")
+    narrar("\nÉ véspera de Halloween na cidade encantada de Glitterkill...")
     narrar("As luzes estão fracas, e o ar parece carregado de magia antiga.")
     narrar("As bonecas encantadas tremem — algo desperto se move nas sombras.")
     time.sleep(1.5)
@@ -162,19 +162,25 @@ def aventura():
     draculaura = Monstro("Draculaura", 200, 30, 10, "Grande")
 
     # Criando itens
-    espada = Arma("Gloss Hipergrudento", "Lipsuculento e letal.", 10)
+    espada1 = Arma("Gloss Hipergrudento", "Lipsuculento e letal.", 5)
+    espeda2 = Arma("Labunizador", "solta labubunês")
     escudo = Armadura("Protetor Térmico", "Um escudo rosa, mas poderoso.", 5)
     pocao_vida = Item("Poção Rosa", "Restaura 30 de vida e um pouco de esperança."1)
 
     # Inventário inicial
     hero.inventario.append(espada)
+    
     hero.inventario.append(escudo)
     hero.inventario.append(pocao_vida)
     narrar(f"{hero.nome} encontrou uma {espada.nome}, um {escudo.nome} e uma {pocao_vida.nome}!")
 
     # Equipar itens
-    hero.equipar_item(espada)
+    hero.equipar_item(espada1)
+    hero.equipar_item(espada2)
     hero.equipar_item(escudo)
+    hero.equipar_item(porcao_vida)
+
+
 
     # Batalha 1
     venceu = batalha(hero, pearl)
