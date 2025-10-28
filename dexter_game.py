@@ -117,4 +117,29 @@ viloes = [
     {"nome": "Jordan Chase", "vida": 85, "forca": 17, "defesa": 9, "inteligencia": 16, "culpado": True},
     {"nome": "Trinity Killer", "vida": 120, "forca": 25, "defesa": 12, "inteligencia": 22, "culpado": True},
 ]
+# ------------------------------
+# EVENTOS EXTRAS
+# ------------------------------
+def historia_extra(vilao):
+    cenas = {
+        "Ice Truck Killer": "🚚 Um assassino que desafia Dexter com mensagens de sangue. O jogo psicológico começa.",
+        "Miguel Prado": "⚖️ Um promotor e 'amigo' de Dexter... mas a confiança pode ser fatal.",
+        "Doakes": "👮 O sargento Doakes desconfia de tudo. Um passo em falso, e tudo acaba.",
+        "Jordan Chase": "🎙️ Um guru motivacional que esconde um culto de tortura e morte.",
+        "Trinity Killer": "🔔 Um homem comum à primeira vista, mas com um ritual de morte perfeito. O maior desafio de Dexter.",
+    }
+    pausa(cenas.get(vilao["nome"], "🩸 Um novo perigo surge nas ruas de Miami..."))
+
+def armadilha(dexter, vilao):
+    pausa(f"🧠 {dexter.nome} prepara uma armadilha para {vilao['nome']}...")
+    chance = random.random()
+    if chance < 0.6:
+        dano = random.randint(20, 40)
+        vilao["vida"] -= dano
+        pausa(f"💥 A armadilha explode! {vilao['nome']} sofre {dano} de dano!")
+    elif chance < 0.85:
+        pausa("😐 A armadilha falha. O vilão escapa ileso.")
+    else:
+        pausa("🚨 O vilão descobre o plano e denuncia Dexter!")
+        dexter.descoberto = True
 
