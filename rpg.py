@@ -99,6 +99,9 @@ def menu():
           meu_heroi.ganhar_experiencia(50)
           print(f"Vida de {meu_heroi.nome}: {meu_heroi.vida}")
 
+        if meu_heroi.esta_vivo():
+          print("\n---Nova batalha contra o Troll---")
+
 
 
 
