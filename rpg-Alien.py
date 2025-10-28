@@ -84,3 +84,21 @@ def batalha(heroi, monstro):
     else:
         print(f"\nO {monstro.nome} matou {heroi.nome}. A missão terminou...")
         return False
+    
+    def rota_descricao(rota):
+    if rota == "1":
+        return "Laboratório de espécimes"
+    elif rota == "2":
+        return "Sala de máquinas"
+    elif rota == "3":
+        return "Cabine de comando"
+    return "Corredor escuro"
+
+def usar_item(tripulante):
+    for item in tripulante.inventario:
+        if "kit" in item.nome.lower():
+            tripulante.vida += 40
+            tripulante.inventario.remove(item)
+            print(f"{tripulante.nome} usou {item.nome}. Vida atual: {tripulante.vida}")
+            return
+    print("Você não tem nenhum kit médico.")
