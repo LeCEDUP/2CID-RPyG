@@ -57,3 +57,15 @@ class Monstro:
         self.ataque = ataque
         self.defesa = defesa
         self.tipo = tipo
+
+# ========================
+# Função de digitação
+# ========================
+def narrar(texto, atraso=0.04):
+    for caractere in texto:
+        print(caractere, end='', flush=True)
+        time.sleep(atraso)
+    print()
+
+
+
