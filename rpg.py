@@ -138,5 +138,12 @@ def batalha(hero, inimigo):
         narrar(f"\n💀 {hero.nome} foi derrotada por {inimigo.nome}... O brilho se apagou.")
         return False
 
+# ========================
+# Aventura principal interativa
+# ========================
+def aventura():
+    introducao()
+
+
 
 
