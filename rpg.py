@@ -103,6 +103,10 @@ def menu():
           print("\n---Nova batalha contra o Troll---")
           while meu_heroi.esta_vivo() and troll.esta_vivo():
             escolha = input("Atacar? [s/n] ")
+            if escolha.lower() == 's':
+                meu_heroi.atacar(troll)
+                if troll.esta_vivo():
+                    troll.atacar(meu_heroi)
 
 
 
