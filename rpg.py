@@ -69,7 +69,7 @@ class Armadura(Item):
 class Pocao(Item):
     def __init__(self, nome, descricao, cura):
         super().__init__(nome, descricao)
-        self.cura = cura
+        self.cura = cura 
 
 # -------------------------
 # HEROI
