@@ -107,4 +107,14 @@ class Dexter:
             return "Instável"
         else:
             return "À beira do colapso"
+# ------------------------------
+# LISTA DE VILÕES DA SÉRIE
+# ------------------------------
+viloes = [
+    {"nome": "Ice Truck Killer", "vida": 70, "forca": 15, "defesa": 5, "inteligencia": 12, "culpado": True},
+    {"nome": "Miguel Prado", "vida": 80, "forca": 18, "defesa": 8, "inteligencia": 15, "culpado": True},
+    {"nome": "Doakes", "vida": 100, "forca": 20, "defesa": 10, "inteligencia": 20, "culpado": False},
+    {"nome": "Jordan Chase", "vida": 85, "forca": 17, "defesa": 9, "inteligencia": 16, "culpado": True},
+    {"nome": "Trinity Killer", "vida": 120, "forca": 25, "defesa": 12, "inteligencia": 22, "culpado": True},
+]
 
