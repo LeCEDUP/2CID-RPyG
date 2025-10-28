@@ -84,7 +84,7 @@ def narrar(texto, atraso=0.04):
 # ========================
 def introducao():
     print("=" * 60)
-    print("           🎃 AS BATALHA DAS HALLOWGIRLS 🎃")
+    print("           🎃 A HALLOWDIVONICAS 🎃")
     print("=" * 60)
     time.sleep(1.5)
 
@@ -168,8 +168,8 @@ def aventura():
     pocao_vida = Item("Poção Rosa", "Restaura 30 de vida e um pouco de esperança."1)
 
     # Inventário inicial
-    hero.inventario.append(espada)
-    
+    hero.inventario.append(espada1)
+    hero.inventario.append(espada2)
     hero.inventario.append(escudo)
     hero.inventario.append(pocao_vida)
     narrar(f"{hero.nome} encontrou uma {espada.nome}, um {escudo.nome} e uma {pocao_vida.nome}!")
