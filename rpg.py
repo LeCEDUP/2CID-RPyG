@@ -81,6 +81,10 @@ def menu():
             meu_heroi.atacar(vampiro)
         elif escolha.lower() == 'h':
             meu_heroi.habilidade(vampiro)
+        else:
+            print("Obrigada por jogar!")
+            return
+        
 
         if vampiro.esta_vivo():
             vampiro.atacar(meu_heroi)
@@ -94,28 +98,28 @@ def menu():
             meu_heroi.inventario.remove(pocao_vida)
             print(f"Vida atual: {meu_heroi.vida}")
 
-        if meu_heroi.esta_vivo():
-          print(f"\n{meu_heroi.nome} derrotou o {vampiro.nome}!")
-          meu_heroi.ganhar_experiencia(50)
-          print(f"Vida de {meu_heroi.nome}: {meu_heroi.vida}")
+    if meu_heroi.esta_vivo():
+        print(f"\n{meu_heroi.nome} derrotou o {vampiro.nome}!")
+        meu_heroi.ganhar_experiencia(50)
+        print(f"Vida de {meu_heroi.nome}: {meu_heroi.vida}")
 
-        if meu_heroi.esta_vivo():
-          print("\n---Nova batalha contra o Troll---")
-          while meu_heroi.esta_vivo() and troll.esta_vivo():
+    if meu_heroi.esta_vivo():
+        print("\n---Nova batalha contra o Troll---")
+        while meu_heroi.esta_vivo() and troll.esta_vivo():
             escolha = input("Atacar? [s/n] ")
             if escolha.lower() == 's':
                 meu_heroi.atacar(troll)
                 if troll.esta_vivo():
                     troll.atacar(meu_heroi)
 
-        else:
-            print("Obrigada por jogar!")
-            return
-        
-        if meu_heroi.esta_vivo():
-            print(f"\n{meu_heroi.nome} derrotou o {troll.nome}!")
-        else:
-            print(f"\nO {troll.nome} derrotou {meu_heroi.nome}...")
+    else:
+        print("Obrigada por jogar!")
+        return
+    
+    if meu_heroi.esta_vivo():
+        print(f"\n{meu_heroi.nome} derrotou o {troll.nome}!")
+    else:
+        print(f"\nO {troll.nome} derrotou {meu_heroi.nome}...")
 
 menu()
 
