@@ -61,3 +61,50 @@ class Dexter:
         self.xp += 75
         self.passageiro = max(0, self.passageiro - 15)
         self.amostras.append(alvo['nome'])
+
+
+            def investigar(self, alvo):
+        pausa(f"🕵️ {self.nome} investiga {alvo['nome']} nas sombras...")
+        time.sleep(2)
+        chance = random.random()
+
+        if chance < 0.5:
+            pausa(f"🔎 {alvo['nome']} possui um histórico violento... provas encontradas.")
+            alvo["culpado"] = True
+            alvo["defesa"] += 3
+        elif chance < 0.8:
+            pausa("❌ Nenhuma prova concreta. O Passageiro começa a sussurrar...")
+            self.passageiro = min(100, self.passageiro + 10)
+        else:
+            pausa(f"🚨 {alvo['nome']} percebe que está sendo seguido!")
+            if random.random() < 0.5:
+                pausa("😨 Mas Dexter escapa sem ser visto.")
+            else:
+                pausa("👮 Alguém denuncia Dexter... ele está sob vigilância!")
+                self.descoberto = True
+
+    def descansar(self):
+        pausa("😴 Dexter retorna ao laboratório para limpar vestígios e refletir.")
+        self.vida = min(100, self.vida + 15)
+        self.passageiro = max(0, self.passageiro - 5)
+        if random.random() < 0.3:
+            pausa("📞 Debra liga suspeitando de algo. A tensão aumenta...")
+            self.passageiro += 5
+
+    def estado(self):
+        print("\n========================")
+        print(f"🧠 Estado Mental: {self.estado_mental()}")
+        print(f"❤️ Vida: {self.vida}")
+        print(f"🩸 Passageiro Sombrio: {self.passageiro}")
+        print(f"🔬 Amostras Coletadas: {len(self.amostras)}")
+        print(f"🎯 Experiência: {self.xp}")
+        print("========================")
+
+    def estado_mental(self):
+        if self.passageiro < 40:
+            return "Controlado"
+        elif self.passageiro < 70:
+            return "Instável"
+        else:
+            return "À beira do colapso"
+
