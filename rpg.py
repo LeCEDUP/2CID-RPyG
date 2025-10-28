@@ -33,3 +33,15 @@ def introducao():
     print("\n" + "=" * 60)
     narrar("Pressione ENTER para continuar...")
     input()
+
+def jogo():
+    print("\n=== MISSÃO: VILA DO SOL ===")
+    nome = input("Digite o nome do seu agente: ")
+    print(f"Bem-vindo, Agente {nome}.\n")
+
+    print("Escolha sua Classe:")
+    print("1 - Combatente 🪖 (força física, alta resistência)")
+    print("2 - Ocultista 📖 (usa o paranormal, mas arrisca a sanidade)")
+    print("3 - Especialista 🧰 (mais evasivo e estratégico)")
+
+    classe = input("Escolha (1/2/3): ")
