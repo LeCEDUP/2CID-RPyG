@@ -1,3 +1,5 @@
+#Função para narrar
+
 import random
 import time
 
@@ -34,6 +36,8 @@ def introducao():
     narrar("Pressione ENTER para continuar...")
     input()
 
+#Jogo principal
+
 def jogo():
     print("\n=== MISSÃO: VILA DO SOL ===")
     nome = input("Digite o nome do seu agente: ")
@@ -45,3 +49,34 @@ def jogo():
     print("3 - Especialista 🧰 (mais evasivo e estratégico)")
 
     classe = input("Escolha (1/2/3): ")
+
+    #Atributos de classe
+
+    if classe == "1":
+        vida_jogador = 40
+        sanidade = 80
+        evasao = 0.10
+        defesa = 0.25
+        arma = "Pistola e Faca Militar"
+    elif classe == "2":
+        vida_jogador = 28
+        sanidade = 100
+        evasao = 0.15
+        defesa = 0.10
+        arma = "Ritual e Símbolos Arcanos"
+    else:
+        vida_jogador = 32
+        sanidade = 90
+        evasao = 0.25
+        defesa = 0.15
+        arma = "Gadgets e Ferramentas"
+
+    vida_inimigo = 45
+    nome_inimigo = "Aberração do Véu"
+    inventario = {"poções": 2, "talismãs": 1, "ouro": 0}
+
+    narrar(f"\nVocê entra nas ruínas da antiga capela de Vila do Sol, empunhando {arma.lower()}...")
+    narrar("O ar é denso... algo sussurra seu nome. Um portal instável brilha na parede rachada.")
+    time.sleep(2)
+    narrar(f"De dentro dele, surge uma forma distorcida: {nome_inimigo}.")
+    time.sleep(1)
