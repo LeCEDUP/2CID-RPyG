@@ -14,5 +14,11 @@ revolver = Arma("Revólver Colt", "Um clássico revólver de seis tiros.", 15)
 colete = Armadura("Colete de Couro", "Um colete resistente de couro curtido.", 6)
 whisky = Item("Garrafa de Whisky", "Recupera 40 pontos de vida.")
 
+print("=== INÍCIO DA AVENTURA NO VELHO OESTE ===\n")
+
+heroi.inventario.append(revolver)
+heroi.inventario.append(colete)
+heroi.inventario.append(whisky)
+print(f"{heroi.nome} encontrou um {revolver.nome}, um {colete.nome} e uma {whisky.nome}.\n")
 
 
