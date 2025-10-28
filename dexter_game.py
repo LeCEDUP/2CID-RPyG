@@ -142,4 +142,68 @@ def armadilha(dexter, vilao):
     else:
         pausa("🚨 O vilão descobre o plano e denuncia Dexter!")
         dexter.descoberto = True
+# ------------------------------
+# JOGO PRINCIPAL
+# ------------------------------
+def jogo():
+    dexter = Dexter()
+    pausa("⚔️ Dexter Morgan veste suas luvas e afia sua faca cirúrgica.")
+    pausa("🌙 Miami dorme... mas o Passageiro Sombrio acorda dentro dele.")
+
+    for vilao in viloes:
+        if dexter.descoberto or not dexter.esta_vivo():
+            pausa("\n🚔 Dexter foi descoberto... o jogo terminou.")
+            break
+
+        pausa(f"\n🎯 NOVO ALVO: {vilao['nome']}")
+        pausa(f"📜 Informações: Vida {vilao['vida']} | Defesa {vilao['defesa']} | Inteligência {vilao['inteligencia']}")
+        historia_extra(vilao)
+
+        while vilao["vida"] > 0 and dexter.esta_vivo() and not dexter.descoberto:
+            print("\nO que Dexter fará?")
+            print("1️⃣ Investigar o alvo")
+            print("2️⃣ Atacar diretamente")
+            print("3️⃣ Sequestrar e levar para a mesa")
+            print("4️⃣ Descansar e observar o comportamento")
+            print("5️⃣ Criar uma armadilha")
+            print("6️⃣ Fugir e mudar de alvo")
+            acao = input("Escolha uma opção (1-6): ")
+
+            if acao == "1":
+                dexter.investigar(vilao)
+            elif acao == "2":
+                if dexter.atacar(vilao):
+                    pausa("🩸 Um novo troféu foi adicionado à coleção.")
+                    break
+            elif acao == "3":
+                if dexter.sequestrar_e_levar(vilao):
+                    break
+            elif acao == "4":
+                dexter.descansar()
+            elif acao == "5":
+                armadilha(dexter, vilao)
+                if vilao["vida"] <= 0:
+                    break
+            elif acao == "6":
+                if random.random() < 0.4:
+                    pausa("💨 Dexter desaparece nas sombras, deixando o alvo para trás.")
+                    break
+                else:
+                    pausa("🚨 Alguém o vê fugindo! Agora está sendo caçado.")
+                    dexter.descoberto = True
+            else:
+                print("❗ Opção inválida.")
+
+            if dexter.passageiro >= 100:
+                pausa("\n😈 O Passageiro Sombrio toma o controle. Dexter enlouquece.")
+                dexter.descoberto = True
+                break
+
+            dexter.estado()
+
+    if dexter.esta_vivo() and not dexter.descoberto:
+        pausa("\n🌅 O sol nasce sobre Miami. Mais uma noite termina... por enquanto.")
+        dexter.estado()
+    else:
+        pausa("\n💀 Dexter caiu — pela polícia, por seus demônios, ou pelo destino.")
 
