@@ -21,4 +21,18 @@ heroi.inventario.append(colete)
 heroi.inventario.append(whisky)
 print(f"{heroi.nome} encontrou um {revolver.nome}, um {colete.nome} e uma {whisky.nome}.\n")
 
+heroi.equipar_item(revolver)
+heroi.equipar_item(colete)
 
+print("--- DUELO NA FRONTEIRA ---")
+while heroi.esta_vivo() and bandido.esta_vivo():
+    heroi.atacar(bandido)
+    if bandido.esta_vivo():
+        bandido.atacar(heroi)
+
+if heroi.esta_vivo():
+    print(f"{heroi.nome} derrotou o {bandido.nome} no duelo!")
+    heroi.ganhar_experiencia(60)
+    print(f"Vida atual: {heroi.vida}")
+else:
+    print(f"{heroi.nome} foi derrubado pelo {bandido.nome}...")    
