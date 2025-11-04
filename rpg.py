@@ -87,3 +87,9 @@ class Heroi(Personagem):
         dano = random.randint(DANO_MAGIA_MIN, DANO_MAGIA_MAX)
         print(f"{self.nome} lança uma magia poderosa em {alvo.nome} causando {dano} de dano!")
         alvo.receber_dano(dano)
+
+    def exibir_status(self):
+        super().exibir_status()
+        print(f"Nível {self.nivel} | XP: {self.experiencia}/{EXP_PARA_NIVEL} | Mana: {self.mana}/{MANA_BASE + (self.nivel - 1) * MANA_POR_NIVEL}")
+        itens = [item.nome for item in self.inventario] or ["(vazio)"]
+        print("Inventário:", ", ".join(itens))
