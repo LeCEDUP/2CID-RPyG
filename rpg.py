@@ -60,3 +60,11 @@ class Heroi:
             self.ataque += 3
             self.defesa += 2
             print(f"{self.nome} subiu para o nível {self.nivel}!")
+
+class Monstro:
+    def __init__(self, nome, vida, ataque, defesa, tipo):
+        self.nome = nome
+        self.vida = vida
+        self.ataque = ataque
+        self.defesa = defesa
+        self.tipo = tipo
