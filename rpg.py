@@ -142,3 +142,8 @@ def jogo():
                         print(f"Você usou um kit médico e recuperou {cura} de vida!")
                     else:
                         print("Você não tem mais poções!")
+
+            # Defesa
+                elif acao == "d":
+                    print("Você assume uma posição defensiva, focando em resistir. 🛡️")
+                    defesa_turno = True
