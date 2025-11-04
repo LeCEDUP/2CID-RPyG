@@ -80,3 +80,6 @@ def introducao():
                     else:
                     narrar(f"\nO {hollow['nome']} avança e acerta você com força!")
 
+                    player_hp -= dano_inimigo
+                print(f"💥 Você recebeu {dano_inimigo} de dano!")
+
