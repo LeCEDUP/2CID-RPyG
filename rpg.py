@@ -21,7 +21,6 @@ CONFIG_MONSTROS = {
 # CLASSES BASE
 # -------------------------
 class Personagem:
-    """Classe base para todos os seres vivos no jogo."""
     def __init__(self, nome, vida, ataque, defesa):
         self.nome = nome
         self._vida_maxima = vida  
