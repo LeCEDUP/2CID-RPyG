@@ -33,9 +33,9 @@ class Personagem:
         
         if random.random() < 0.15:
             dano = int((self.ataque - alvo.defesa) * 1.5)
-            print(f"💥 ATAQUE CRÍTICO de {self.nome}!")
+            print(f"ATAQUE CRÍTICO de {self.nome}!")
         elif random.random() < 0.10:
-            print(f"🌀 {alvo.nome} esquivou do ataque!")
+            print(f"{alvo.nome} esquivou do ataque!")
             return
         else:
             dano = max(1, self.ataque - alvo.defesa)
@@ -67,6 +67,13 @@ class Heroi(Personagem):
         self.experiencia = 0
         self.mana = MANA_BASE
         self.inventario = []
+
+    def ganhar_experiencia(self, exp):
+        self.experiencia += exp
+        print(f"{self.nome} ganhou {exp} XP!")
+
+        if self.experiencia >= self.experiencia_necessaria:
+            self.subir_nivel()
 
     def subir_nivel(self):
         self.nivel += 1
