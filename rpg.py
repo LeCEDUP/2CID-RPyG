@@ -135,3 +135,14 @@ def menu_batalha(heroi, monstro):
     else:
         print(f"{heroi.nome} foi derrotado...")
 
+
+def main():
+    print("🌟 Bem-vindo ao RPG Melhorado 🌟")
+    nome = input("Digite o nome do seu herói: ")
+    heroi = Heroi(nome)
+    monstro = Monstro("Goblin", "Pequeno")
+    menu_batalha(heroi, monstro)
+
+if __name__ == "__main__":
+    main()
+
