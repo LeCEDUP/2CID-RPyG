@@ -13,8 +13,8 @@ MANA_POR_NIVEL = 10
 
 
 CONFIG_MONSTROS = {
-    "Pequeno": {"vida": 30, "ataque": 5, "defesa": 2, "exp_recompensa": 15, "chance_loot": 0.5},
-    "Grande": {"vida": 60, "ataque": 12, "defesa": 5, "exp_recompensa": 30, "chance_loot": 0.7}
+    "Pequeno": {"vida": 35, "ataque": 6, "defesa": 3, "exp_recompensa": 15, "chance_loot": 0.5},
+    "Grande": {"vida": 65, "ataque": 12, "defesa": 5, "exp_recompensa": 30, "chance_loot": 0.7}
 }
 
 # -------------------------
