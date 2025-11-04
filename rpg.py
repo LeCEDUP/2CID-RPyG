@@ -32,3 +32,10 @@ input("Pressione ENTER para continuar...")
 print(f"\nWhis entrega a {heroi.nome} um {kamehameha.nome}, um {armadura_treinamento.nome} e uma {senzu.nome}!")
 heroi.inventario += [kamehameha, armadura_treinamento, senzu]
 
+# Equipar
+heroi.equipar_item(kamehameha)
+heroi.equipar_item(armadura_treinamento)
+
+print("\nGoku entra em posição de combate. A arena treme... surge Jiren!")
+input("Pressione ENTER para iniciar a luta contra Jiren!")
+
