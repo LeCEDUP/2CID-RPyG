@@ -7,7 +7,7 @@ def narrar(texto, atraso=0.04):
         print(caractere, end='', flush=True)
         time.sleep(atraso)
     print()
-    
+
 def introducao():
     print("=" * 60)
     print("                 ⚔️ BLEACH: YŌKOSO! WATASHI NO SŌRU SOCIETY ⚔️") 
@@ -23,3 +23,8 @@ def introducao():
     print("\n" + "=" * 60)
     narrar("Prepare-se para lutar, shinigami.")
     input("\nPressione ENTER para continuar...")
+
+    def combate():
+    player_hp = 100
+    player_dano = 20
+    cura = 15
