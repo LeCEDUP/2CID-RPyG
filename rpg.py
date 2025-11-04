@@ -150,3 +150,63 @@ class Mochila:
         else:
             for i, item in enumerate(self.itens, 1):
                 print(f"{i}. {item['nome']} (+{item['cura']} ❤️)")
+                # -------------------- FUNÇÕES AUXILIARES --------------------
+def usar_comida_em_heroi(moch, h):
+    moch.listar_itens()
+    esc = input("Escolha comida: ")
+    if esc.isdigit() and 1 <= int(esc) <= len(moch.itens):
+        c = moch.itens.pop(int(esc)-1)
+        h.vida = min(h.vida_max, h.vida + c["cura"])
+        print(f"{h.apelido} comeu {c['nome']} e recuperou {c['cura']} de vida! ❤️")
+    else:
+        print("Inválido.")
+
+def criar_heroi(personagem, apelido=None):
+    ataques = {
+        "Hu Tao": ["Explosão Flamejante", "Lança Ígnea", "Inferno Carmesim"],
+        "Furina": ["Onda Purificadora", "Chuva Sagrada", "Mar Revolto"],
+        "Raiden": ["Descarga Rápida", "Relâmpago Cortante", "Tormenta Púrpura"],
+        "Kaeya": ["Lâmina Gélida", "Sopro Ártico", "Nevasca Glacial"],
+        "Zhongli": ["Golpe Rochoso", "Terra Colapsante", "Montanha Dourada"],
+        "Nahida": ["Crescimento Selvagem", "Esporos Venenosos", "Raízes Ancestrais"],
+        "Venti": ["Corte de Vento", "Rajada Espiral", "Fúria Tempestuosa"]
+    }
+    nomes = ataques[personagem]
+    poderes = [Poder(nomes[0], 10, 1), Poder(nomes[1], 20, 2), Poder(nomes[2], 35, 4)]
+    apelido = apelido or personagem
+    return Heroi(personagem, personagem, apelido, 120, 20, 10, poderes)
+
+def combate(heroi, inimigo, moch):
+    sep()
+    slow(f"⚔️ Batalha contra {inimigo.nome}! EXP do inimigo: {getattr(inimigo,'exp',0)}", 0.03)
+    sep()
+    while any(h.vivo() for h in moch.herois) and inimigo.vivo():
+        acao = heroi.atacar(inimigo)
+        if acao == "usar_comida":
+            usar_comida_em_heroi(moch, heroi)
+            continue
+        if acao == "trocar_heroi":
+            moch.listar_herois()
+            esc = input("Escolha herói para trocar: ")
+            if esc.isdigit() and 1 <= int(esc) <= len(moch.herois):
+                heroi = moch.herois[int(esc)-1]
+                print(f"{heroi.apelido} agora é o ativo!")
+            continue
+
+        if isinstance(inimigo, Celestia):
+            inimigo.troca_fase()
+            if random.random() < 0.3:
+                inimigo.atacar_especial([heroi])
+
+        if inimigo.vivo():
+            inimigo.atacar(heroi)
+
+        for h in moch.herois:
+            h.tick_cds()
+        sep()
+
+    if any(h.vivo() for h in moch.herois):
+        slow(f"🏆 Vitória! {inimigo.nome} derrotado!", 0.03)
+        for h in moch.herois:
+            if h.vivo():
+                h.ganhar_exp(getattr(inimigo,'exp',30))
