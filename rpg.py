@@ -105,3 +105,11 @@ while (heroi.esta_vivo() or vegeta.esta_vivo()) and black_freeza.esta_vivo():
         black_freeza.atacar(alvo)
 
     turno += 1
+# Resultado final
+if black_freeza.esta_vivo():
+    print("\n💀 Black Freeza venceu... os universos entram em colapso!")
+else:
+    print("\n🌟 VITÓRIA ÉPICA! Goku e Vegeta derrotaram Black Freeza!")
+    print("O equilíbrio do multiverso foi restaurado... por agora.")
+
+print("\n--- FIM DA AVENTURA ---")
