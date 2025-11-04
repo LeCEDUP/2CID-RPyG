@@ -160,3 +160,11 @@ def jogo():
                     else:
                         print("Você não tem mais talismãs!")
 
+            # Fuga
+                elif acao == "f":
+                    narrar("Você recua, sentindo o peso das vozes do Outro Lado...")
+                    break
+                else:
+                    print("Ação inválida!")
+                    continue
+
