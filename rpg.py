@@ -125,3 +125,10 @@ def jogo():
 
                 vida_inimigo -= dano
 
+#Evento paranormal
+                if random.random() < 0.20:
+                    print("\n⚠️ A criatura distorce o ambiente!")
+                    dano_mental = random.randint(5, 15)
+                    sanidade -= dano_mental
+                    print(f"Sua mente treme... perdeu {dano_mental}% de sanidade!")
+
