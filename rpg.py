@@ -57,3 +57,13 @@ class Personagem:
         barra = "❤️" * int(self.vida / self._vida_maxima * 10)
         print(f"{self.nome} - Vida: {self.vida}/{self._vida_maxima} {barra}")
 
+# -------------------------
+# HEROI
+# -------------------------
+class Heroi(Personagem):
+    def __init__(self, nome):
+        super().__init__(nome, VIDA_BASE_HEROI, ATAQUE_BASE_HEROI, DEFESA_BASE_HEROI)
+        self.nivel = 1
+        self.experiencia = 0
+        self.mana = MANA_BASE
+        self.inventario = []
