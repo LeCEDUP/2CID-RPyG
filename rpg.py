@@ -30,3 +30,9 @@ while heroi.esta_vivo() and lobo.esta_vivo():
 
         print(f"{heroi.nome} venceu o {lobo.nome} e ganhou 40 de experiência!")
     heroi.ganhar_experiencia(40)
+
+    print("\n--- Herói usa uma poção ---")
+if pocao in heroi.inventario:
+    heroi.vida += 25
+    heroi.inventario.remove(pocao)
+    print(f"{heroi.nome} usou {pocao.nome}. Vida atual: {heroi.vida}")
