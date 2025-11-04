@@ -75,3 +75,8 @@ class Monstro:
     def atacar(self, heroi):
         print(f"{self.nome} ataca {heroi.nome} causando {self.ataque} de dano!")
         heroi.receber_dano(self.ataque)
+
+    def receber_dano(self, dano):
+        dano_final = max(0, dano - self.defesa)
+        self.vida -= dano_final
+        print(f"{self.nome} recebeu {dano_final} de dano. Vida: {self.vida}")
