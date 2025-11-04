@@ -61,3 +61,7 @@ def introducao():
                 if player_hp > 100:
                     player_hp = 100
                 narrar(f"\nVocê canaliza seu reishi e recupera {cura} pontos de vida!")
+
+                elif escolha == "4":
+                narrar("\nVocê tenta recuar, mas o Hollow bloqueia seu caminho!")
+                continue
