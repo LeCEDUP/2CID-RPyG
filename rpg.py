@@ -1,14 +1,16 @@
-#Função para narrar
-
 import random
 import time
 
+# ======== FUNÇÃO DE NARRAÇÃO ========
 def narrar(texto, atraso=0.04):
+    """Exibe o texto com efeito de digitação."""
     for caractere in texto:
         print(caractere, end='', flush=True)
         time.sleep(atraso)
     print()
 
+
+# ======== INTRODUÇÃO ========
 def introducao():
     print("=" * 60)
     print("               🌑 ECOS DO OUTRO LADO 🌑")
@@ -36,8 +38,8 @@ def introducao():
     narrar("Pressione ENTER para continuar...")
     input()
 
-#Jogo principal
 
+# ======== JOGO PRINCIPAL ========
 def jogo():
     print("\n=== MISSÃO: VILA DO SOL ===")
     nome = input("Digite o nome do seu agente: ")
@@ -50,24 +52,20 @@ def jogo():
 
     classe = input("Escolha (1/2/3): ")
 
-    #Atributos de classe
-
-#combatente
-    if classe == "1":
+    # ===== ATRIBUTOS DE CLASSE =====
+    if classe == "1":  # Combatente
         vida_jogador = 45
         sanidade = 80
         evasao = 0.10
         defesa = 0.25
         arma = "Pistola e Faca Militar"
-#ocultista
-    elif classe == "2":
+    elif classe == "2":  # Ocultista
         vida_jogador = 30
         sanidade = 100
         evasao = 0.15
         defesa = 0.10
         arma = "Ritual e Símbolos Arcanos"
-#Especialista
-    else:
+    else:  # Especialista
         vida_jogador = 35
         sanidade = 90
         evasao = 0.25
@@ -84,114 +82,113 @@ def jogo():
     narrar(f"De dentro dele, surge uma forma distorcida: {nome_inimigo}.")
     time.sleep(1)
 
-#Função de combate
-
+    # ===== LOOP DE COMBATE =====
     while vida_jogador > 0 and vida_inimigo > 0:
-            print(f"\n{name_format(nome)}: {vida_jogador} ❤️ | Sanidade: {sanidade}% 🧠")
-            print(f"{nome_inimigo}: {vida_inimigo} 💀")
-            print(f"Inventário: {inventario}")
-            acao = input("\nAtacar (a), Curar (c), Defender (d), Usar Talismã (t) ou Fugir (f)? ").lower()
+        print(f"\n{name_format(nome)}: {vida_jogador} ❤️ | Sanidade: {sanidade}% 🧠")
+        print(f"{nome_inimigo}: {vida_inimigo} 💀")
+        print(f"Inventário: {inventario}")
+        acao = input("\nAtacar (a), Curar (c), Defender (d), Usar Talismã (t) ou Fugir (f)? ").lower()
 
-    if acao == "a":
-                if classe == "1":  # Combatente
-                    if random.random() < 0.15:
-                        dano = 0
-                        print("Você errou o disparo!")
-                    else:
-                        dano = random.randint(5, 9)
-                        if random.random() < 0.20:
-                            dano += random.randint(3, 5)
-                            print("Ataque preciso! Você atingiu um ponto vital!")
-                    print(f"Você causou {dano} de dano!")
-                elif classe == "2":  # Ocultista
-                    if random.random() < 0.25:
-                        dano = random.randint(8, 12)
-                        print("Você canaliza energia paranormal! 🔮")
-                        sanidade -= random.randint(5, 10)
-                    else:
-                        dano = random.randint(4, 7)
-                        print("Você lança um feitiço menor.")
-                    print(f"Você causou {dano} de dano!")
-                else:  # Especialista
-                    if random.random() < 0.10:
-                        dano = 0
-                        print("Seu ataque falhou!")
-                    else:
-                        dano = random.randint(3, 6)
-                        if random.random() < 0.35:
-                            dano *= 2
-                            print("Ataque crítico com precisão cirúrgica! ⚡")
-                    print(f"Você causou {dano} de dano!")
-
-                vida_inimigo -= dano
-
-#Evento paranormal
-                if random.random() < 0.20:
-                    print("\n⚠️ A criatura distorce o ambiente!")
-                    dano_mental = random.randint(5, 15)
-                    sanidade -= dano_mental
-                    print(f"Sua mente treme... perdeu {dano_mental}% de sanidade!")
-
-            # Cura
-
-                elif acao == "c":
-                    if inventario["poções"] > 0:
-                        cura = random.randint(5, 10)
-                        vida_jogador += cura
-                        inventario["poções"] -= 1
-                        print(f"Você usou um kit médico e recuperou {cura} de vida!")
-                    else:
-                        print("Você não tem mais poções!")
-
-            # Defesa
-                elif acao == "d":
-                    print("Você assume uma posição defensiva, focando em resistir. 🛡️")
-                    defesa_turno = True
-
-            # Talismã
-                elif acao == "t":
-                    if inventario["talismãs"] > 0:
-                        print("Você ergue um talismã contra o Véu! ✴️")
-                        inventario["talismãs"] -= 1
-                        dano = random.randint(6, 12)
-                        vida_inimigo -= dano
-                        sanidade += random.randint(5, 10)
-                        print(f"A energia espiritual queimou a criatura e restaurou parte da sua mente! (+Sanidade)")
-                    else:
-                        print("Você não tem mais talismãs!")
-
-            # Fuga
-                elif acao == "f":
-                    narrar("Você recua, sentindo o peso das vozes do Outro Lado...")
-                    break
+        # ==== ATAQUE ====
+        if acao == "a":
+            if classe == "1":  # Combatente
+                if random.random() < 0.15:
+                    dano = 0
+                    print("Você errou o disparo!")
                 else:
-                    print("Ação inválida!")
-                    continue
+                    dano = random.randint(5, 9)
+                    if random.random() < 0.20:
+                        dano += random.randint(3, 5)
+                        print("Ataque preciso! Você atingiu um ponto vital!")
+                print(f"Você causou {dano} de dano!")
+            elif classe == "2":  # Ocultista
+                if random.random() < 0.25:
+                    dano = random.randint(8, 12)
+                    print("Você canaliza energia paranormal! 🔮")
+                    sanidade -= random.randint(5, 10)
+                else:
+                    dano = random.randint(4, 7)
+                    print("Você lança um feitiço menor.")
+                print(f"Você causou {dano} de dano!")
+            else:  # Especialista
+                if random.random() < 0.10:
+                    dano = 0
+                    print("Seu ataque falhou!")
+                else:
+                    dano = random.randint(3, 6)
+                    if random.random() < 0.35:
+                        dano *= 2
+                        print("Ataque crítico com precisão cirúrgica! ⚡")
+                print(f"Você causou {dano} de dano!")
 
-            # Ataque do inimigo
-                if vida_inimigo > 0:
-                    print(f"\n{name_format(nome_inimigo)} ruge e avança!")
-                    if random.random() < evasao:
-                        print("Você esquivou por pouco! 💨")
-                    else:
-                        dano_inimigo = random.randint(4, 9)
-                        if acao == "d":
-                            dano_inimigo = int(dano_inimigo * (1 - defesa))
-                            print("Sua defesa reduziu parte do dano!")
-                        vida_jogador -= dano_inimigo
-                        print(f"A aberração causou {dano_inimigo} de dano!")
-                        if random.random() < 0.2:
-                            print("Seu corpo arrepia... algo sussurra em sua mente.")
-                            sanidade -= random.randint(5, 10)
+            vida_inimigo -= dano
 
-            # Verificar sanidade
-                if sanidade <= 0:
-                    narrar("\nVocê perdeu completamente a sanidade...")
-                    narrar("O Véu se abre diante de você. E desta vez... você atravessa.")
-                    vida_jogador = 0
-                    break
+            # Evento punitivo paranormal
+            if random.random() < 0.20:
+                print("\n⚠️ A criatura distorce o ambiente!")
+                dano_mental = random.randint(5, 15)
+                sanidade -= dano_mental
+                print(f"Sua mente treme... perdeu {dano_mental}% de sanidade!")
 
-            # Resultados
+        # ==== CURAR ====
+        elif acao == "c":
+            if inventario["poções"] > 0:
+                cura = random.randint(5, 10)
+                vida_jogador += cura
+                inventario["poções"] -= 1
+                print(f"Você usou um kit médico e recuperou {cura} de vida!")
+            else:
+                print("Você não tem mais poções!")
+
+        # ==== DEFESA ====
+        elif acao == "d":
+            print("Você assume uma posição defensiva, focando em resistir. 🛡️")
+            defesa_turno = True
+
+        # ==== TALISMÃ ====
+        elif acao == "t":
+            if inventario["talismãs"] > 0:
+                print("Você ergue um talismã contra o Véu! ✴️")
+                inventario["talismãs"] -= 1
+                dano = random.randint(6, 12)
+                vida_inimigo -= dano
+                sanidade += random.randint(5, 10)
+                print(f"A energia espiritual queimou a criatura e restaurou parte da sua mente! (+Sanidade)")
+            else:
+                print("Você não tem mais talismãs!")
+
+        # ==== FUGIR ====
+        elif acao == "f":
+            narrar("Você recua, sentindo o peso das vozes do Outro Lado...")
+            break
+        else:
+            print("Ação inválida!")
+            continue
+
+        # ==== ATAQUE DO INIMIGO ====
+        if vida_inimigo > 0:
+            print(f"\n{name_format(nome_inimigo)} ruge e avança!")
+            if random.random() < evasao:
+                print("Você esquivou por pouco! 💨")
+            else:
+                dano_inimigo = random.randint(4, 9)
+                if acao == "d":
+                    dano_inimigo = int(dano_inimigo * (1 - defesa))
+                    print("Sua defesa reduziu parte do dano!")
+                vida_jogador -= dano_inimigo
+                print(f"A aberração causou {dano_inimigo} de dano!")
+                if random.random() < 0.2:
+                    print("Seu corpo arrepia... algo sussurra em sua mente.")
+                    sanidade -= random.randint(5, 10)
+
+        # Verificação de sanidade
+        if sanidade <= 0:
+            narrar("\nVocê perdeu completamente a sanidade...")
+            narrar("O Véu se abre diante de você. E desta vez... você atravessa.")
+            vida_jogador = 0
+            break
+
+    # ===== RESULTADOS =====
     if vida_inimigo <= 0:
         narrar("\nA criatura dissolve-se em gritos, voltando para o Outro Lado.")
         ganho = random.randint(10, 20)
@@ -204,8 +201,11 @@ def jogo():
     else:
         narrar("\nVocê foge... mas o mal ainda está lá fora. O Véu permanece frágil.")
 
+
+# ======== FORMATADOR DE NOMES ========
 def name_format(name):
     return name.upper()
+
 
 # ======== EXECUÇÃO ========
 if __name__ == "__main__":
