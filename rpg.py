@@ -98,3 +98,7 @@ def introducao():
     print("\n✨ Missão Concluída! ✨")
     return True
 
+    if __name__ == "__main__":
+    introducao()
+    combate()
+
