@@ -113,3 +113,9 @@ if pocao in heroi.inventario:
     heroi.vida += 25
     heroi.inventario.remove(pocao)
     print(f"{heroi.nome} usou {pocao.nome}. Vida atual: {heroi.vida}")
+
+print("\n--- Batalha 2: Troll das Montanhas ---")
+while heroi.esta_vivo() and troll.esta_vivo():
+    heroi.atacar(troll)
+    if troll.esta_vivo():
+        troll.atacar(heroi)
