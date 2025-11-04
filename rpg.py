@@ -29,7 +29,6 @@ class Personagem:
         self.defesa = defesa
 
     def atacar(self, alvo):
-        
         if random.random() < 0.15:
             dano = int((self.ataque - alvo.defesa) * 1.5)
             print(f"ATAQUE CRÍTICO de {self.nome}!")
@@ -38,7 +37,6 @@ class Personagem:
             return
         else:
             dano = max(1, self.ataque - alvo.defesa)
-
         alvo.receber_dano(dano)
         print(f"{self.nome} atacou {alvo.nome} causando {dano} de dano!")
 
