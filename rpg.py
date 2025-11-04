@@ -36,3 +36,10 @@ def atacar(self, inimigo):
         dano = self.ataque + (self.arma.dano if self.arma else 0)
         print(f"{self.nome} ataca {inimigo.nome} causando {dano} de dano!")
         inimigo.receber_dano(dano)
+
+        def receber_dano(self, dano):
+            defesa_total = self.defesa + (self.armadura.defesa if self.armadura else 0)
+            dano_final = max(0, dano - defesa_total)
+            self.vida -= dano_final
+            print(f"{self.nome} recebeu {dano_final} de dano. Vida: {self.vida}")
+            
