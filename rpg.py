@@ -89,3 +89,7 @@ def introducao():
                 print("\n☠️ GAME OVER ☠️")
                 return False
 
+                if hollow["hp"] <= 0:
+                narrar(f"\n🔥 O {hollow['nome']} é purificado! Sua alma se dissipa no ar.")
+                time.sleep(1.5)
+
