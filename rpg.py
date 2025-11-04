@@ -42,4 +42,11 @@ def atacar(self, inimigo):
             dano_final = max(0, dano - defesa_total)
             self.vida -= dano_final
             print(f"{self.nome} recebeu {dano_final} de dano. Vida: {self.vida}")
-            
+
+        def equipar_item(self, item):
+            if hasattr(item, "dano"):
+                self.arma = item
+                print(f"{self.nome} equipou a arma: {item.nome}")
+            elif hasattr(item, "defesa"):
+                self.armadura = item
+                print(f"{self.nome} equipou a armadura: {item.nome}")
