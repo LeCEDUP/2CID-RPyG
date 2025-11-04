@@ -38,4 +38,29 @@ heroi.equipar_item(armadura_treinamento)
 
 print("\nGoku entra em posição de combate. A arena treme... surge Jiren!")
 input("Pressione ENTER para iniciar a luta contra Jiren!")
+# ===========================
+# 🥊 Batalha 1: Goku vs Jiren
+# ===========================
+while heroi.esta_vivo() and jiren.esta_vivo():
+    print(f"\nVida de {heroi.nome}: {heroi.vida} | Vida de {jiren.nome}: {jiren.vida}")
+    acao = input("\nEscolha sua ação: [1] Atacar [2] Defender [3] Usar Semente: ")
 
+    if acao == "1":
+        heroi.atacar(jiren)
+    elif acao == "2":
+        print(f"{heroi.nome} assume postura defensiva! Reduz o dano neste turno.")
+        if jiren.esta_vivo():
+            dano = jiren.ataque - (heroi.defesa * 2)
+            if dano < 0: dano = 0
+            heroi.vida -= dano
+            print(f"{jiren.nome} ataca causando {dano} de dano reduzido!")
+        continue
+    elif acao == "3" and senzu in heroi.inventario:
+        heroi.vida = 500
+        heroi.inventario.remove(senzu)
+        print(f"{heroi.nome} come uma {senzu.nome} e restaura totalmente a vida!")
+    else:
+        print("Ação inválida!")
+
+    if jiren.esta_vivo():
+        jiren.atacar(heroi)
