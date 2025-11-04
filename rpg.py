@@ -190,3 +190,24 @@ def jogo():
                     narrar("O Véu se abre diante de você. E desta vez... você atravessa.")
                     vida_jogador = 0
                     break
+
+            # Resultados
+    if vida_inimigo <= 0:
+        narrar("\nA criatura dissolve-se em gritos, voltando para o Outro Lado.")
+        ganho = random.randint(10, 20)
+        inventario["ouro"] += ganho
+        narrar(f"Você encontrou {ganho} moedas antigas no chão.")
+        narrar("Mas algo ainda observa de dentro do Véu...")
+    elif vida_jogador <= 0:
+        narrar("\nSeu corpo cai. Sua mente vaga pelo escuro infinito...")
+        narrar("O Outro Lado te recebeu.")
+    else:
+        narrar("\nVocê foge... mas o mal ainda está lá fora. O Véu permanece frágil.")
+
+def name_format(name):
+    return name.upper()
+
+# ======== EXECUÇÃO ========
+if __name__ == "__main__":
+    introducao()
+    jogo()
