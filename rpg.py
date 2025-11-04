@@ -68,3 +68,7 @@ class Monstro:
         self.ataque = ataque
         self.defesa = defesa
         self.tipo = tipo
+
+    def esta_vivo(self):
+        return self.vida > 0
+
