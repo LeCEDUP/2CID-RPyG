@@ -84,3 +84,7 @@ class Monstro:
 heroi = Heroi("Lina", 100, 10, 4)
 lobo = Monstro("Lobo Selvagem", 40, 8, 2, "Médio")
 troll = Monstro("Troll das Montanhas", 120, 15, 6, "Grande")
+
+espada = Arma("Espada de Madeira", "Uma espada simples feita à mão.", 4)
+armadura = Armadura("Armadura de Couro", "Protege um pouco contra golpes leves.", 3)
+pocao = Item("Poção de Cura", "Restaura 25 de vida.")
