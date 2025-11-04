@@ -65,6 +65,7 @@ class Heroi(Personagem):
         super().__init__(nome, VIDA_BASE_HEROI, ATAQUE_BASE_HEROI, DEFESA_BASE_HEROI)
         self.nivel = 1
         self.experiencia = 0
+        self.experiencia_necessaria = 30 
         self.mana = MANA_BASE
         self.inventario = []
 
@@ -82,7 +83,7 @@ class Heroi(Personagem):
         self.mana = MANA_BASE + (self.nivel - 1) * MANA_POR_NIVEL
         self.ataque += 5
         self.defesa += 2
-        print(f"✨ {self.nome} subiu para o nível {self.nivel}! Vida e mana restauradas!")
+        print(f"{self.nome} subiu para o nível {self.nivel}! Vida e mana restauradas!")
 
     def lancar_magia(self, alvo):
         #Adiciona custo de mana
