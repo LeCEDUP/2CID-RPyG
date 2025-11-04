@@ -80,3 +80,33 @@ def jogo():
     time.sleep(2)
     narrar(f"De dentro dele, surge uma forma distorcida: {nome_inimigo}.")
     time.sleep(1)
+
+#Função de combate
+
+    while vida_jogador > 0 and vida_inimigo > 0:
+            print(f"\n{name_format(nome)}: {vida_jogador} ❤️ | Sanidade: {sanidade}% 🧠")
+            print(f"{nome_inimigo}: {vida_inimigo} 💀")
+            print(f"Inventário: {inventario}")
+            acao = input("\nAtacar (a), Curar (c), Defender (d), Usar Talismã (t) ou Fugir (f)? ").lower()
+
+    if acao == "a":
+                if classe == "1":  # Combatente
+                    if random.random() < 0.15:
+                        dano = 0
+                        print("Você errou o disparo!")
+                    else:
+                        dano = random.randint(5, 9)
+                        if random.random() < 0.20:
+                            dano += random.randint(3, 5)
+                            print("Ataque preciso! Você atingiu um ponto vital!")
+                    print(f"Você causou {dano} de dano!")
+
+    vida_inimigo = 45
+    nome_inimigo = "Aberração do Véu"
+    inventario = {"poções": 2, "talismãs": 1, "ouro": 0}
+
+    narrar(f"\nVocê entra nas ruínas da antiga capela de Vila do Sol, empunhando {arma.lower()}...")
+    narrar("O ar é denso... algo sussurra seu nome. Um portal instável brilha na parede rachada.")
+    time.sleep(2)
+    narrar(f"De dentro dele, surge uma forma distorcida: {nome_inimigo}.")
+    time.sleep(1)
