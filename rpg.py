@@ -31,3 +31,8 @@ class Heroi:
 
 def esta_vivo(self):
         return self.vida > 0
+
+def atacar(self, inimigo):
+        dano = self.ataque + (self.arma.dano if self.arma else 0)
+        print(f"{self.nome} ataca {inimigo.nome} causando {dano} de dano!")
+        inimigo.receber_dano(dano)
