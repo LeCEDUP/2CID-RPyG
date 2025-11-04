@@ -119,3 +119,11 @@ while heroi.esta_vivo() and troll.esta_vivo():
     heroi.atacar(troll)
     if troll.esta_vivo():
         troll.atacar(heroi)
+
+if heroi.esta_vivo():
+    print(f"\nParabéns, {heroi.nome}! Você derrotou o {troll.nome} e libertou o vale da escuridão!")
+    heroi.ganhar_experiencia(100)
+else:
+    print(f"\n{heroi.nome} foi derrotado pelo {troll.nome}. Fim da jornada.")
+
+print("\n=== Fim da Aventura ===")
