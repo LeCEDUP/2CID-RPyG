@@ -237,7 +237,7 @@ def menu_batalha(heroi, monstro):
 # -------------------------
 def main():
     introducao()
-    digitar("🌟 Bem-vindo ao RPG Aprimorado 🌟\n")
+    digitar("🌟 Bem-vindo ao: O Último Guardião 🌟\n")
     nome = input("Digite o nome do seu herói: ")
     heroi = Heroi(nome)
     digitar(f"\nBoa sorte em sua jornada, {heroi.nome}! Que a sorte esteja com você.\n")
