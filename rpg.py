@@ -72,3 +72,6 @@ class Monstro:
     def esta_vivo(self):
         return self.vida > 0
 
+    def atacar(self, heroi):
+        print(f"{self.nome} ataca {heroi.nome} causando {self.ataque} de dano!")
+        heroi.receber_dano(self.ataque)
