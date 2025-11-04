@@ -72,3 +72,7 @@ def introducao():
 
                 if hollow["hp"] > 0:
                 dano_inimigo = random.randint(hollow["dano"] - 4, hollow["dano"] + 4)
+
+                if escolha == "2":
+                    dano_inimigo //= 2
+                    narrar(f"\nO {hollow['nome']} ataca, mas você bloqueia parte do golpe!")
