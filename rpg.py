@@ -83,3 +83,9 @@ def introducao():
                     player_hp -= dano_inimigo
                 print(f"💥 Você recebeu {dano_inimigo} de dano!")
 
+                if player_hp <= 0:
+                narrar("\nVocê cai de joelhos... sua visão escurece.")
+                narrar("O rugido do Hollow ecoa enquanto tudo desaparece.")
+                print("\n☠️ GAME OVER ☠️")
+                return False
+
