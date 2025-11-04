@@ -22,3 +22,13 @@ kamehameha = Arma("Kamehameha", "Golpe icônico de Goku, carregado com energia d
 armadura_treinamento = Armadura("Gi de Treinamento do Whis", "Uniforme divino que aumenta a defesa.", 20)
 senzu = Item("Semente dos Deuses", "Restaura completamente a vida.")
 
+# ===========================
+# 🌠 Introdução
+# ===========================
+
+print(f"\n{heroi.nome} desperta em meio a um novo torneio dos deuses...")
+input("Pressione ENTER para continuar...")
+
+print(f"\nWhis entrega a {heroi.nome} um {kamehameha.nome}, um {armadura_treinamento.nome} e uma {senzu.nome}!")
+heroi.inventario += [kamehameha, armadura_treinamento, senzu]
+
