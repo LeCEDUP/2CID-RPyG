@@ -91,3 +91,6 @@ pocao = Item("Poção de Cura", "Restaura 25 de vida.")
 
 print("\n=== Início da Aventura ===")
 print(f"O herói {heroi.nome} inicia sua jornada na floresta misteriosa!")
+
+heroi.inventario.extend([espada, armadura, pocao])
+print(f"{heroi.nome} encontrou alguns itens: {[item.nome for item in heroi.inventario]}")
