@@ -28,12 +28,12 @@ class Heroi:
         self.defesa = defesa
         self.inventario = []
 
-def atacar(self, alvo):
-        dano = max(0, self.ataque - alvo.defesa)
-        print(f"{self.nome} ataca {alvo.nome} causando {dano} de dano.")
+    def atacar(self, alvo):
+        dano = max(1, self.ataque - alvo.defesa)
+        print(f"{self.nome} ataca {alvo.nome} causando {dano} de dano!")
         alvo.receber_dano(dano)
 
- def receber_dano(self, dano):
+    def receber_dano(self, dano):
         self.vida -= dano
         print(f"{self.nome} recebeu {dano} de dano. Vida atual: {self.vida}")
 
@@ -50,6 +50,7 @@ def atacar(self, alvo):
     def ganhar_experiencia(self, exp):
         print(f"{self.nome} ganhou {exp} de experiência!")
 
+
 class Monstro:
     def __init__(self, nome, vida, ataque, defesa, tipo):
         self.nome = nome
@@ -57,6 +58,18 @@ class Monstro:
         self.ataque = ataque
         self.defesa = defesa
         self.tipo = tipo
+
+    def atacar(self, alvo):
+        dano = max(1, self.ataque - alvo.defesa)
+        print(f"{self.nome} lança um ataque sombrio em {alvo.nome}, causando {dano} de dano!")
+        alvo.receber_dano(dano)
+
+    def receber_dano(self, dano):
+        self.vida -= dano
+        print(f"{self.nome} recebeu {dano} de dano. Vida atual: {self.vida}")
+
+    def esta_vivo(self):
+        return self.vida > 0
 
 # ========================
 # Função de digitação
@@ -68,43 +81,33 @@ def narrar(texto, atraso=0.04):
     print()
 
 # ========================
-# Introdução temática de Halloween
+# Introdução
 # ========================
 def introducao():
     print("=" * 60)
     print("           🎃 SOMBRAS DE HALLOWEEN: O REINO ROSA EM PERIGO 🎃")
     print("=" * 60)
     time.sleep(1.5)
-
     narrar("\nÉ véspera de Halloween na cidade encantada de GlitterVille...")
-    narrar("As luzes estão fracas, e o ar parece carregado de magia antiga.")
     narrar("As bonecas encantadas tremem — algo desperto se move nas sombras.")
-    time.sleep(1.5)
-
-    narrar("\nHá rumores de que Pearl, a criatura dos espelhos quebrados, retornou.")
+    narrar("\nPearl, a criatura dos espelhos quebrados, retornou.")
     narrar("Ela se alimenta da vaidade e transforma reflexos em pesadelos.")
-    time.sleep(1.5)
-
     narrar("\nMas há esperança...")
     narrar("Barbie, a heroína das cores, jura proteger o brilho do mundo humano.")
     narrar("Com sua espada ‘Gloss Hipergrudento’ e o escudo ‘Protetor Térmico’, ela parte em sua missão.")
-    narrar("Seu destino? Enfrentar Pearl... e, no fim da jornada, o terrível dragão das trevas: Draculaura.")
-    time.sleep(1.5)
-
+    narrar("Seu destino? Enfrentar Pearl... e o terrível dragão das trevas: Draculaura.")
     print("\n" + "=" * 60)
-    narrar("Pressione ENTER para começar sua aventura assustadora...")
-    input()
-    print("\n" + "=" * 60)
-    time.sleep(1)
+    input("Pressione ENTER para começar sua aventura assustadora... ")
+    print("=" * 60)
 
 # ========================
-# Função de batalha interativa
+# Função de batalha
 # ========================
 def batalha(hero, inimigo):
     narrar(f"\n--- ⚔️ Batalha contra {inimigo.nome} ---\n")
     while hero.esta_vivo() and inimigo.esta_vivo():
-        # Turno do jogador
-        print(f"\nSua Vida: {hero.vida} | {inimigo.nome} Vida: {inimigo.vida}")
+        print(f"\nSua Vida: {hero.vida} | Vida de {inimigo.nome}: {inimigo.vida}")
+        print(f"💖 Poções disponíveis: {len([item for item in hero.inventario if 'Poção' in item.nome])}")
         print("Escolha sua ação:")
         print("1. Atacar")
         print("2. Usar Poção")
@@ -113,7 +116,7 @@ def batalha(hero, inimigo):
         if escolha == "1":
             hero.atacar(inimigo)
         elif escolha == "2":
-            pocoes = [item for item in hero.inventario if isinstance(item, Item) and "Poção" in item.nome]
+            pocoes = [item for item in hero.inventario if "Poção" in item.nome]
             if pocoes:
                 pocao = pocoes[0]
                 hero.vida += 30
@@ -139,60 +142,49 @@ def batalha(hero, inimigo):
         return False
 
 # ========================
-# Aventura principal interativa
+# Aventura principal
 # ========================
 def aventura():
     introducao()
 
-# Criando personagens
-    hero = Heroi("Barbie", 100, 15, 5)
-    pearl = Monstro("Pearl", 30, 8, 2, "Pequeno")
+    # Criando personagens
+    hero = Heroi("Barbie", 100, 20, 15)
+    pearl = Monstro("Pearl", 150, 30, 2, "Pequeno")
     draculaura = Monstro("Draculaura", 200, 30, 10, "Grande")
 
-# Criando itens
+    # Itens
     espada = Arma("Gloss Hipergrudento", "Lipsuculento e letal.", 10)
     escudo = Armadura("Protetor Térmico", "Um escudo rosa, mas poderoso.", 5)
-    pocao_vida = Item("Poção Rosa", "Restaura 30 de vida e um pouco de esperança."1)
 
-# Inventário inicial
-    hero.inventario.append(espada)
-    hero.inventario.append(escudo)
-    hero.inventario.append(pocao_vida)
-    narrar(f"{hero.nome} encontrou uma {espada.nome}, um {escudo.nome} e uma {pocao_vida.nome}!")
+    # 🩷 Poções de vida (8 unidades)
+    for _ in range(8):
+        hero.inventario.append(Item("Poção Rosa", "Restaura 30 de vida e um pouco de esperança."))
 
-# Equipar itens
+    # Equipar itens
     hero.equipar_item(espada)
     hero.equipar_item(escudo)
+
+    narrar(f"{hero.nome} encontrou uma {espada.nome}, um {escudo.nome} e 8 Poções Rosa!")
 
     # Batalha 1
     venceu = batalha(hero, pearl)
     if not venceu:
         return
 
-    # Batalha 2 - desafio final
+    # Batalha final
     venceu = batalha(hero, draculaura)
     if venceu:
         narrar(f"\n🌟 Parabéns, {hero.nome}! Você derrotou {draculaura.nome} e salvou GlitterVille!")
         hero.ganhar_experiencia(200)
     else:
-        narrar(f"\n☠️ {hero.nome} foi derrotada pelo {draculaura.nome}... As sombras venceram.")
+        narrar(f"\n☠️ {hero.nome} foi derrotada por {draculaura.nome}... As sombras venceram.")
 
     print("\n--- 🎃 Fim da Aventura 🎃 ---\n")
-    
+
+
 # ========================
 # Início do jogo
 # ========================
 if __name__ == "__main__":
     aventura()
-
-
-
-
-
-
-
-
-
-
-
-
+1
