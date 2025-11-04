@@ -28,3 +28,6 @@ class Heroi:
         self.inventario = []
         self.arma = None
         self.armadura = None
+
+def esta_vivo(self):
+        return self.vida > 0
