@@ -16,3 +16,15 @@ class Armadura(Item):
     def __init__(self, nome, descricao, defesa):
         super().__init__(nome, descricao)
         self.defesa = defesa
+
+class Heroi:
+    def __init__(self, nome, vida, ataque, defesa):
+        self.nome = nome
+        self.vida = vida
+        self.ataque = ataque
+        self.defesa = defesa
+        self.experiencia = 0
+        self.nivel = 1
+        self.inventario = []
+        self.arma = None
+        self.armadura = None
