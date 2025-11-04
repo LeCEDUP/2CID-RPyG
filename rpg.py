@@ -80,3 +80,28 @@ input("Pressione ENTER para continuar...")
 
 print("\n⚠️ Black Freeza aparece! A ameaça suprema retorna para destruir tudo!")
 print("Mas Vegeta chega para ajudar! 👑🔥")
+# ===========================
+# 💥 Batalha Final
+# ===========================
+turno = 1
+while (heroi.esta_vivo() or vegeta.esta_vivo()) and black_freeza.esta_vivo():
+    print(f"\n--- TURNO {turno} ---")
+    print(f"Vida: {heroi.nome}({heroi.vida}) | Vegeta({vegeta.vida}) | Black Freeza({black_freeza.vida})")
+
+    acao = input(f"\nEscolha sua ação para {heroi.nome}: [1] Atacar [2] Defender: ")
+    if acao == "1":
+        heroi.atacar(black_freeza)
+    elif acao == "2":
+        print(f"{heroi.nome} concentra energia e reduz o dano recebido neste turno.")
+    else:
+        print("Ação inválida, você hesitou no combate!")
+
+    if vegeta.esta_vivo() and black_freeza.esta_vivo():
+        print(f"\n{vegeta.nome} avança com um golpe feroz!")
+        vegeta.atacar(black_freeza)
+
+    if black_freeza.esta_vivo():
+        alvo = vegeta if turno % 2 == 0 and vegeta.esta_vivo() else heroi
+        black_freeza.atacar(alvo)
+
+    turno += 1
