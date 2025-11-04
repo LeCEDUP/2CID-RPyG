@@ -55,3 +55,9 @@ def introducao():
                 elif escolha == "2":
                 narrar("\nVocê assume uma postura defensiva, preparando-se para o ataque.")
                 defesa = True
+
+                elif escolha == "3":
+                player_hp += cura
+                if player_hp > 100:
+                    player_hp = 100
+                narrar(f"\nVocê canaliza seu reishi e recupera {cura} pontos de vida!")
