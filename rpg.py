@@ -69,3 +69,6 @@ def introducao():
                 else:
                 narrar("\nOpção inválida!")
                 continue
+
+                if hollow["hp"] > 0:
+                dano_inimigo = random.randint(hollow["dano"] - 4, hollow["dano"] + 4)
