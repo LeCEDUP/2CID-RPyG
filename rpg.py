@@ -21,3 +21,9 @@ print(f"{heroi.nome} encontrou uma {espada.nome}, uma {armadura.nome} e uma {poc
 
 heroi.equipar_item(espada)
 heroi.equipar_item(armadura)
+
+print("\n--- Batalha 1: Lobo Selvagem ---")
+while heroi.esta_vivo() and lobo.esta_vivo():
+    heroi.atacar(lobo)
+    if lobo.esta_vivo():
+        lobo.atacar(heroi)
