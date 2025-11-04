@@ -155,30 +155,36 @@ class Monstro(Personagem):
 # -------------------------
 def menu_batalha(heroi, monstro):
     print(f"\nInício da batalha: {heroi.nome} vs {monstro.nome} ({monstro.tipo})")
-
     while heroi.esta_vivo() and monstro.esta_vivo():
-        print("-" * 30)
+        print("-" * 35)
         heroi.exibir_status()
         monstro.exibir_status()
-
-        print("\n1️⃣ Atacar | 2️⃣ Magia | 3️⃣ Poção (não implementado aqui)")
+        print("\n1️⃣ Atacar | 2️⃣ Magia | 3️⃣ Poção")
         escolha = input("Escolha sua ação: ")
 
         if escolha == "1":
             heroi.atacar(monstro)
         elif escolha == "2":
             heroi.lancar_magia(monstro)
+        elif escolha == "3":
+            heroi.usar_pocao()
         else:
-            print("Ação inválida!")
+            print("Escolha inválida!")
+            continue
 
         if monstro.esta_vivo():
             monstro.atacar(heroi)
 
     if heroi.esta_vivo():
-        print(f"{heroi.nome} venceu e ganhou {monstro.exp_recompensa} XP!")
+        print(f"{heroi.nome} derrotou {monstro.nome} e ganhou {monstro.exp_recompensa} XP!")
         heroi.ganhar_experiencia(monstro.exp_recompensa)
+        loot = monstro.loot()
+        if loot:
+            print(f"{monstro.nome} dropou {loot.nome}!")
+            heroi.equipar_item(loot)
     else:
-        print(f"{heroi.nome} foi derrotado...")
+        print("Você foi derrotado!")
+
 
 # -------------------------
 # INÍCIO
