@@ -51,3 +51,7 @@ def introducao():
                 dano_causado = random.randint(player_dano - 5, player_dano + 5)
                 hollow["hp"] -= dano_causado
                 narrar(f"\nVocê ataca com sua zanpakutō e causa {dano_causado} de dano!")
+
+                elif escolha == "2":
+                narrar("\nVocê assume uma postura defensiva, preparando-se para o ataque.")
+                defesa = True
