@@ -127,3 +127,26 @@ class Celestia(Monstro):
             self.fase = 2
             print("⚡ Celestia desperta sua forma colossal! Seus ataques dobraram!")
             self.atk *= 2
+            # -------------------- MOCHILA --------------------
+class Mochila:
+    def __init__(self):
+        self.moras = 0
+        self.itens = []
+        self.herois = []
+
+    def add_item(self, item):
+        self.itens.append(item)
+
+    def add_heroi(self, h):
+        self.herois.append(h)
+
+    def listar_herois(self):
+        for i, h in enumerate(self.herois, 1):
+            print(f"{i}. {h.status()}")
+
+    def listar_itens(self):
+        if not self.itens:
+            print("Sem comidas no momento.")
+        else:
+            for i, item in enumerate(self.itens, 1):
+                print(f"{i}. {item['nome']} (+{item['cura']} ❤️)")
