@@ -190,12 +190,28 @@ def menu_batalha(heroi, monstro):
 # INÍCIO
 # -------------------------
 def main():
-    print("🌟 Bem-vindo ao RPG Melhorado 🌟")
+    print("Bem-vindo ao RPG Aprimorado ")
     nome = input("Digite o nome do seu herói: ")
     heroi = Heroi(nome)
-    monstro = Monstro("Goblin", "Pequeno")
-    menu_batalha(heroi, monstro)
+    print(f"\nBoa sorte, {heroi.nome}!\n")
+
+    inimigos = [
+        ("Goblin", "Pequeno"),
+        ("Orc", "Grande"),
+        ("Goblin Líder", "Pequeno"),
+        ("Orc Guerreiro", "Grande")
+    ]
+
+    for nome_m, tipo in inimigos:
+        if not heroi.esta_vivo():
+            break
+        monstro = Monstro(nome_m, tipo, heroi.nivel)
+        menu_batalha(heroi, monstro)
+
+    if heroi.esta_vivo():
+        print(f"{heroi.nome} sobreviveu a todas as batalhas e alcançou o nível {heroi.nivel}!")
+    else:
+        print("Fim da jornada...")
 
 if __name__ == "__main__":
     main()
-
