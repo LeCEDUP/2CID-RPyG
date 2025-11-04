@@ -94,3 +94,6 @@ print(f"O herói {heroi.nome} inicia sua jornada na floresta misteriosa!")
 
 heroi.inventario.extend([espada, armadura, pocao])
 print(f"{heroi.nome} encontrou alguns itens: {[item.nome for item in heroi.inventario]}")
+
+heroi.equipar_item(espada)
+heroi.equipar_item(armadura)
