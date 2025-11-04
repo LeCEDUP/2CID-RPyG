@@ -93,3 +93,11 @@ class Heroi(Personagem):
         print(f"Nível {self.nivel} | XP: {self.experiencia}/{EXP_PARA_NIVEL} | Mana: {self.mana}/{MANA_BASE + (self.nivel - 1) * MANA_POR_NIVEL}")
         itens = [item.nome for item in self.inventario] or ["(vazio)"]
         print("Inventário:", ", ".join(itens))
+
+class Monstro(Personagem):
+    def __init__(self, nome, tipo):
+        config = CONFIG_MONSTROS[tipo]
+        super().__init__(nome, config["vida"], config["ataque"], config["defesa"])
+        self.tipo = tipo
+        self.exp_recompensa = config["exp_recompensa"]
+        self.chance_loot = config["chance_loot"]
