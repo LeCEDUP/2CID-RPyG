@@ -1,4 +1,24 @@
 import random
+import sys
+import time
+
+# -------------------------
+# FUNÇÃO DE DIGITAÇÃO E INTRODUÇÃO
+# -------------------------
+def digitar(texto, atraso=0.04):
+    """Mostra o texto com efeito de digitação"""
+    for letra in texto:
+        sys.stdout.write(letra)
+        sys.stdout.flush()
+        time.sleep(atraso)
+    print()
+
+def introducao():
+    digitar("🌌 Era uma vez em Eldoria, um reino tomado pelas trevas...")
+    digitar("👑 Após a queda do antigo rei, criaturas sombrias começaram a surgir das florestas e cavernas.")
+    digitar("⚔️ Você é o último descendente dos Guardiões da Luz, herdeiro de um poder esquecido há séculos.")
+    digitar("💫 Sua missão: restaurar a paz em Eldoria, enfrentando monstros e dominando a magia antiga.")
+    digitar("✨ O destino do reino agora depende da sua coragem...\n")
 
 # -------------------------
 # CONFIGURAÇÕES
@@ -210,10 +230,11 @@ def menu_batalha(heroi, monstro):
 # INÍCIO DO JOGO
 # -------------------------
 def main():
-    print("🌟 Bem-vindo ao RPG Aprimorado 🌟")
+    introducao()
+    digitar("🌟 Bem-vindo ao RPG Aprimorado 🌟\n")
     nome = input("Digite o nome do seu herói: ")
     heroi = Heroi(nome)
-    print(f"\nBoa sorte, {heroi.nome}!\n")
+    digitar(f"\nBoa sorte em sua jornada, {heroi.nome}! Que os deuses estejam com você.\n")
 
     inimigos = [
         ("Goblin", "Pequeno"),
