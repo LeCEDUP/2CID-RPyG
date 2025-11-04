@@ -76,3 +76,7 @@ def introducao():
                 if escolha == "2":
                     dano_inimigo //= 2
                     narrar(f"\nO {hollow['nome']} ataca, mas você bloqueia parte do golpe!")
+
+                    else:
+                    narrar(f"\nO {hollow['nome']} avança e acerta você com força!")
+
