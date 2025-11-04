@@ -27,3 +27,6 @@ while heroi.esta_vivo() and lobo.esta_vivo():
     heroi.atacar(lobo)
     if lobo.esta_vivo():
         lobo.atacar(heroi)
+
+        print(f"{heroi.nome} venceu o {lobo.nome} e ganhou 40 de experiência!")
+    heroi.ganhar_experiencia(40)
