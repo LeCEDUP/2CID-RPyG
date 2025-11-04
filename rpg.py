@@ -52,18 +52,21 @@ def jogo():
 
     #Atributos de classe
 
+#combatente
     if classe == "1":
         vida_jogador = 40
         sanidade = 80
         evasao = 0.10
         defesa = 0.25
         arma = "Pistola e Faca Militar"
+#ocultista
     elif classe == "2":
         vida_jogador = 28
         sanidade = 100
         evasao = 0.15
         defesa = 0.10
         arma = "Ritual e Símbolos Arcanos"
+#Especialista
     else:
         vida_jogador = 32
         sanidade = 90
@@ -101,12 +104,4 @@ def jogo():
                             print("Ataque preciso! Você atingiu um ponto vital!")
                     print(f"Você causou {dano} de dano!")
 
-    vida_inimigo = 45
-    nome_inimigo = "Aberração do Véu"
-    inventario = {"poções": 2, "talismãs": 1, "ouro": 0}
 
-    narrar(f"\nVocê entra nas ruínas da antiga capela de Vila do Sol, empunhando {arma.lower()}...")
-    narrar("O ar é denso... algo sussurra seu nome. Um portal instável brilha na parede rachada.")
-    time.sleep(2)
-    narrar(f"De dentro dele, surge uma forma distorcida: {nome_inimigo}.")
-    time.sleep(1)
