@@ -234,7 +234,7 @@ def main():
     digitar("🌟 Bem-vindo ao RPG Aprimorado 🌟\n")
     nome = input("Digite o nome do seu herói: ")
     heroi = Heroi(nome)
-    digitar(f"\nBoa sorte em sua jornada, {heroi.nome}! Que os deuses estejam com você.\n")
+    digitar(f"\nBoa sorte em sua jornada, {heroi.nome}! Que a sorte esteja com você.\n")
 
     inimigos = [
         ("Goblin", "Pequeno"),
