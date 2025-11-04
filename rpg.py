@@ -65,3 +65,7 @@ def introducao():
                 elif escolha == "4":
                 narrar("\nVocê tenta recuar, mas o Hollow bloqueia seu caminho!")
                 continue
+
+                else:
+                narrar("\nOpção inválida!")
+                continue
