@@ -23,3 +23,18 @@ inimigos = [
 ]
 
 print("\n=== bem vindo à aventura de RPG ===\n")
+
+def usar_pocao():
+    global heroi, pocao
+    if pocao in heroi.inventario:
+        heroi.vida += 30
+        heroi.inventario.remove(pocao)
+        print(f"\n {heroi.nome} usou uma poção e recuperou 30 de vida! Vida atual: {heroi.vida}")
+    else:
+        print("\n Você não tem mais poções!")
+
+def status():
+    print(f"\n Vida: {heroi.vida}")
+    print(f" Defesa: {heroi.defesa}")
+    print(f" Ataque base: {heroi.ataque}")
+    print(f" Inventário: {[item.nome for item in heroi.inventario]}\n")
