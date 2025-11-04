@@ -93,3 +93,8 @@ def introducao():
                 narrar(f"\n🔥 O {hollow['nome']} é purificado! Sua alma se dissipa no ar.")
                 time.sleep(1.5)
 
+                narrar("\nCom ambos os Hollows derrotados, a energia espiritual da área se estabiliza.")
+    narrar("Mas algo no ar te diz que a verdadeira batalha ainda está por vir...")
+    print("\n✨ Missão Concluída! ✨")
+    return True
+
