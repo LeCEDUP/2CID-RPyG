@@ -28,3 +28,8 @@ def introducao():
     player_hp = 100
     player_dano = 20
     cura = 15
+
+    hollows = [
+        {"nome": "Menos Grande", "hp": 60, "dano": 12},
+        {"nome": "Adjuchas das Sombras", "hp": 80, "dano": 18}
+    ]
