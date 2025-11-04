@@ -1,4 +1,4 @@
-import random
+import random 
 import sys
 import time
 
@@ -35,7 +35,8 @@ MANA_POR_NIVEL = 10
 
 CONFIG_MONSTROS = {
     "Pequeno": {"vida": 35, "ataque": 6, "defesa": 3, "exp_recompensa": 15, "chance_loot": 0.5},
-    "Grande": {"vida": 65, "ataque": 12, "defesa": 5, "exp_recompensa": 30, "chance_loot": 0.7}
+    "Grande": {"vida": 65, "ataque": 12, "defesa": 5, "exp_recompensa": 30, "chance_loot": 0.7},
+    "ChefeFinal": {"vida": 160, "ataque": 20, "defesa": 10, "exp_recompensa": 100, "chance_loot": 1.0}
 }
 
 # -------------------------
@@ -184,10 +185,15 @@ class Monstro(Personagem):
                     Pocao("Poção de Cura", "Restaura 20 de vida", 20),
                     Arma("Adaga Enferrujada", "Aumenta o ataque em 2", 2)
                 ])
-            else:
+            elif self.tipo == "Grande":
                 return random.choice([
                     Armadura("Escudo Velho", "Aumenta a defesa em 3", 3),
                     Pocao("Poção Forte", "Restaura 40 de vida", 40)
+                ])
+            elif self.tipo == "ChefeFinal":
+                return random.choice([
+                    Arma("Espada da Luz", "Aumenta o ataque em 8", 8),
+                    Armadura("Armadura Dourada", "Aumenta a defesa em 8", 8)
                 ])
         return None
 
@@ -250,7 +256,20 @@ def main():
         menu_batalha(heroi, monstro)
 
     if heroi.esta_vivo():
-        print(f"🎖️ {heroi.nome} sobreviveu a todas as batalhas e alcançou o nível {heroi.nivel}!")
+        digitar("\n💨 O chão começa a tremer... O céu escurece...")
+        digitar("🔥 Das profundezas surge o lendário Dragão das Sombras!")
+        chefe_final = Monstro("Dragão das Sombras", "ChefeFinal", heroi.nivel + 2)
+        menu_batalha(heroi, chefe_final)
+
+        if heroi.esta_vivo():
+            digitar("\n✨ Com o último golpe, o Dragão das Sombras cai diante de você.")
+            digitar("🌅 O sol volta a brilhar sobre Eldoria.")
+            digitar(f"🏆 {heroi.nome}, o Herói da Luz, restaurou a paz ao reino!")
+            digitar("🌠 Sua lenda será contada por gerações...")
+            digitar("🎖️ FIM DE JOGO 🎖️")
+        else:
+            digitar("\n💀 O Dragão das Sombras triunfou, e as trevas tomaram Eldoria mais uma vez...")
+            digitar("Mas o nome do herói será lembrado nas estrelas... 🌌")
     else:
         print("💀 Fim da jornada...")
 
