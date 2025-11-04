@@ -33,3 +33,7 @@ def introducao():
         {"nome": "Menos Grande", "hp": 60, "dano": 12},
         {"nome": "Adjuchas das Sombras", "hp": 80, "dano": 18}
     ]
+
+    for hollow in hollows:
+        narrar(f"\n⚔️ Um {hollow['nome']} surge diante de você!")
+        time.sleep(1)
