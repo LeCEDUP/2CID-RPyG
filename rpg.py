@@ -112,5 +112,16 @@ def jogo():
                         dano = random.randint(4, 7)
                         print("Você lança um feitiço menor.")
                     print(f"Você causou {dano} de dano!")
+                else:  # Especialista
+                    if random.random() < 0.10:
+                        dano = 0
+                        print("Seu ataque falhou!")
+                    else:
+                        dano = random.randint(3, 6)
+                        if random.random() < 0.35:
+                            dano *= 2
+                            print("Ataque crítico com precisão cirúrgica! ⚡")
+                    print(f"Você causou {dano} de dano!")
 
+                vida_inimigo -= dano
 
