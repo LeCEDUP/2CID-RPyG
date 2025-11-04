@@ -37,3 +37,12 @@ def introducao():
     for hollow in hollows:
         narrar(f"\n⚔️ Um {hollow['nome']} surge diante de você!")
         time.sleep(1)
+
+        while hollow["hp"] > 0 and player_hp > 0:
+            print("\n" + "-" * 60)
+            print(f"Sua Vida: {player_hp} | Vida do {hollow['nome']}: {hollow['hp']}")
+            print("1️⃣ Atacar")
+            print("2️⃣ Defender")
+            print("3️⃣ Concentrar reishi (Curar)")
+            print("4️⃣ Fugir")
+            escolha = input("\nO que deseja fazer? ")
