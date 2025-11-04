@@ -67,3 +67,12 @@ class Heroi(Personagem):
         self.experiencia = 0
         self.mana = MANA_BASE
         self.inventario = []
+
+    def subir_nivel(self):
+        self.nivel += 1
+        self._vida_maxima = VIDA_BASE_HEROI + (self.nivel - 1) * VIDA_POR_NIVEL
+        self.vida = self._vida_maxima
+        self.mana = MANA_BASE + (self.nivel - 1) * MANA_POR_NIVEL
+        self.ataque += 5
+        self.defesa += 2
+        print(f"✨ {self.nome} subiu para o nível {self.nivel}! Vida e mana restauradas!")
