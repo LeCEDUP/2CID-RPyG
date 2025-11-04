@@ -80,3 +80,7 @@ class Monstro:
         dano_final = max(0, dano - self.defesa)
         self.vida -= dano_final
         print(f"{self.nome} recebeu {dano_final} de dano. Vida: {self.vida}")
+
+heroi = Heroi("Lina", 100, 10, 4)
+lobo = Monstro("Lobo Selvagem", 40, 8, 2, "Médio")
+troll = Monstro("Troll das Montanhas", 120, 15, 6, "Grande")
