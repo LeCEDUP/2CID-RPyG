@@ -1,22 +1,24 @@
 class Personagem:
-    def __init__(self, nome, vida, ataque, defesa):
+    def _init_(self, nome, vida, ataque, defesa):
         self.nome = nome
         self.vida = vida
         self.ataque = ataque
         self.defesa = defesa
 
     def atacar(self, alvo):
-        dano = max(0, self.ataque - alvo.defesa)
-        alvo.receber_dano(dano)
-        print(f"{self.nome} atacou {alvo.nome} causando {dano} de dano.")
+        """Ataque normal: dano = ataque +/- variação - defesa do alvo"""
+        variacao = random.randint(-2, 4)  # pequena variação no dano
+        dano_bruto = max(0, self.ataque + variacao - alvo.defesa)
+        alvo.receber_dano(dano_bruto)
+        print(f"{self.nome} atacou {alvo.nome} e causou {dano_bruto} de dano.")
 
     def receber_dano(self, dano):
         self.vida -= dano
-        if self.vida <= 0:
+        if self.vida < 0:
             self.vida = 0
-            print(f"{self.nome} foi derrotado!")
-        else:
-            print(f"{self.nome} recebeu {dano} de dano. Vida restante: {self.vida}")
 
     def esta_vivo(self):
         return self.vida > 0
+
+    def _str_(self):
+        return f"{self.nome} (Vida: {self.vida}, Atq: {self.ataque}, Def: {self.defesa})"
