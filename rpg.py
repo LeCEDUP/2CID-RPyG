@@ -105,8 +105,9 @@ class Monstro(Personagem):
         self.exp_recompensa = config["exp_recompensa"]
         self.chance_loot = config["chance_loot"]
 
-
-
+# -------------------------
+# MENU DE BATALHA
+# -------------------------
 def menu_batalha(heroi, monstro):
     print(f"\nInício da batalha: {heroi.nome} vs {monstro.nome} ({monstro.tipo})")
 
