@@ -18,3 +18,6 @@ print(f"O herói {heroi.nome} inicia sua jornada na floresta misteriosa!")
 
 heroi.inventario.extend([espada, armadura, pocao])
 print(f"{heroi.nome} encontrou uma {espada.nome}, uma {armadura.nome} e uma {pocao.nome}!")
+
+heroi.equipar_item(espada)
+heroi.equipar_item(armadura)
