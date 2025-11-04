@@ -94,6 +94,9 @@ class Heroi(Personagem):
         itens = [item.nome for item in self.inventario] or ["(vazio)"]
         print("Inventário:", ", ".join(itens))
 
+# -------------------------
+# MONSTRO
+# -------------------------
 class Monstro(Personagem):
     def __init__(self, nome, tipo):
         config = CONFIG_MONSTROS[tipo]
@@ -101,3 +104,5 @@ class Monstro(Personagem):
         self.tipo = tipo
         self.exp_recompensa = config["exp_recompensa"]
         self.chance_loot = config["chance_loot"]
+
+
