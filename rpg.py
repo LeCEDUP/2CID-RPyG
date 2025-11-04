@@ -54,7 +54,8 @@ class Personagem:
     
     
     def exibir_status(self):
-        print(f"{self.nome} - Vida: {self.vida}/{self._vida_maxima}, Ataque: {self.ataque}, Defesa: {self.defesa}")
+        barra = "❤️" * int(self.vida / self._vida_maxima * 10)
+        print(f"{self.nome} - Vida: {self.vida}/{self._vida_maxima} {barra}")
 
 # -------------------------
 # ITENS (Movidos para cima para clareza da herança)
