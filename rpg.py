@@ -76,3 +76,14 @@ class Heroi(Personagem):
         self.ataque += 5
         self.defesa += 2
         print(f"✨ {self.nome} subiu para o nível {self.nivel}! Vida e mana restauradas!")
+
+    def lancar_magia(self, alvo):
+        #Adiciona custo de mana
+        custo = 10
+        if self.mana < custo:
+            print("Mana insuficiente!")
+            return
+        self.mana -= custo
+        dano = random.randint(DANO_MAGIA_MIN, DANO_MAGIA_MAX)
+        print(f"{self.nome} lança uma magia poderosa em {alvo.nome} causando {dano} de dano!")
+        alvo.receber_dano(dano)
