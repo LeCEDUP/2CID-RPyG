@@ -54,21 +54,21 @@ def jogo():
 
 #combatente
     if classe == "1":
-        vida_jogador = 40
+        vida_jogador = 45
         sanidade = 80
         evasao = 0.10
         defesa = 0.25
         arma = "Pistola e Faca Militar"
 #ocultista
     elif classe == "2":
-        vida_jogador = 28
+        vida_jogador = 30
         sanidade = 100
         evasao = 0.15
         defesa = 0.10
         arma = "Ritual e Símbolos Arcanos"
 #Especialista
     else:
-        vida_jogador = 32
+        vida_jogador = 35
         sanidade = 90
         evasao = 0.25
         defesa = 0.15
