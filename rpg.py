@@ -44,9 +44,7 @@ class Personagem:
         print(f"{self.nome} atacou {alvo.nome} causando {dano} de dano!")
 
     def receber_dano(self, dano):
-        self.vida -= dano
-        if self.vida < 0:
-            self.vida = 0
+        self.vida = max(0, self.vida - dano)
         print(f"{self.nome} recebeu {dano} de dano. Vida restante: {self.vida}.")
         if self.vida <= 0:
             print(f"{self.nome} foi derrotado!")
