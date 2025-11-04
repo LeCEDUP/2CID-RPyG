@@ -12,3 +12,6 @@ troll = Monstro("Troll das Montanhas", 120, 15, 6, "Grande")
 espada = Arma("Espada de Madeira", "Uma espada simples feita à mão.", 4)
 armadura = Armadura("Armadura de Couro", "Protege um pouco contra golpes leves.", 3)
 pocao = Item("Poção de Cura", "Restaura 25 de vida.")
+
+print("\n=== Início da Aventura ===")
+print(f"O herói {heroi.nome} inicia sua jornada na floresta misteriosa!")
