@@ -78,7 +78,7 @@ class Pocao(Item):
         self.cura = cura
 
 # -------------------------
-# HEROI
+# HERÓI
 # -------------------------
 class Heroi(Personagem):
     def __init__(self, nome):
@@ -132,6 +132,21 @@ class Monstro(Personagem):
         self.tipo = tipo
         self.exp_recompensa = config["exp_recompensa"]
         self.chance_loot = config["chance_loot"]
+
+    def loot(self):
+        if random.random() < self.chance_loot:
+            if self.tipo == "Pequeno":
+                return random.choice([
+                    Pocao("Poção de Cura", "Restaura 20 de vida", 20),
+                    Arma("Adaga Enferrujada", "Aumenta o ataque em 2", 2)
+                ])
+            else:
+                return random.choice([
+                    Armadura("Escudo Velho", "Aumenta a defesa em 3", 3),
+                    Pocao("Poção Forte", "Restaura 40 de vida", 40)
+                ])
+        return None
+
 
 # -------------------------
 # MENU DE BATALHA
