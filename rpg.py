@@ -64,3 +64,10 @@ while heroi.esta_vivo() and jiren.esta_vivo():
 
     if jiren.esta_vivo():
         jiren.atacar(heroi)
+# Pós-luta
+if heroi.esta_vivo():
+    print(f"\n🔥 {heroi.nome} derrotou Jiren! O campo inteiro vibra de energia!")
+    heroi.ganhar_experiencia(300)
+else:
+    print(f"\n💀 {heroi.nome} caiu diante do poder de {jiren.nome}... Fim de jogo.")
+    exit()
