@@ -147,3 +147,16 @@ def jogo():
                 elif acao == "d":
                     print("Você assume uma posição defensiva, focando em resistir. 🛡️")
                     defesa_turno = True
+
+            # Talismã
+                elif acao == "t":
+                    if inventario["talismãs"] > 0:
+                        print("Você ergue um talismã contra o Véu! ✴️")
+                        inventario["talismãs"] -= 1
+                        dano = random.randint(6, 12)
+                        vida_inimigo -= dano
+                        sanidade += random.randint(5, 10)
+                        print(f"A energia espiritual queimou a criatura e restaurou parte da sua mente! (+Sanidade)")
+                    else:
+                        print("Você não tem mais talismãs!")
+
