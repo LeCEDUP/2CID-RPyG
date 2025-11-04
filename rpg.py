@@ -183,3 +183,10 @@ def jogo():
                         if random.random() < 0.2:
                             print("Seu corpo arrepia... algo sussurra em sua mente.")
                             sanidade -= random.randint(5, 10)
+
+            # Verificar sanidade
+                if sanidade <= 0:
+                    narrar("\nVocê perdeu completamente a sanidade...")
+                    narrar("O Véu se abre diante de você. E desta vez... você atravessa.")
+                    vida_jogador = 0
+                    break
