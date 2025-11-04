@@ -49,3 +49,5 @@ while heroi.esta_vivo() and troll.esta_vivo():
 
     else:
     print(f"\n{heroi.nome} foi derrotado pelo {troll.nome}. Fim da jornada.")
+
+    print("\n=== Fim da Aventura ===")
