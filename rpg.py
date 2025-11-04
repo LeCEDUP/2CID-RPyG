@@ -71,3 +71,12 @@ if heroi.esta_vivo():
 else:
     print(f"\n💀 {heroi.nome} caiu diante do poder de {jiren.nome}... Fim de jogo.")
     exit()
+
+# ===========================
+# 🌱 Recuperação
+# ===========================
+print("\nApós a luta, {heroi.nome} sente o Ki de alguém poderoso se aproximando...")
+input("Pressione ENTER para continuar...")
+
+print("\n⚠️ Black Freeza aparece! A ameaça suprema retorna para destruir tudo!")
+print("Mas Vegeta chega para ajudar! 👑🔥")
