@@ -106,3 +106,31 @@ class Monstro(Personagem):
         self.chance_loot = config["chance_loot"]
 
 
+
+def menu_batalha(heroi, monstro):
+    print(f"\nInício da batalha: {heroi.nome} vs {monstro.nome} ({monstro.tipo})")
+
+    while heroi.esta_vivo() and monstro.esta_vivo():
+        print("-" * 30)
+        heroi.exibir_status()
+        monstro.exibir_status()
+
+        print("\n1️⃣ Atacar | 2️⃣ Magia | 3️⃣ Poção (não implementado aqui)")
+        escolha = input("Escolha sua ação: ")
+
+        if escolha == "1":
+            heroi.atacar(monstro)
+        elif escolha == "2":
+            heroi.lancar_magia(monstro)
+        else:
+            print("Ação inválida!")
+
+        if monstro.esta_vivo():
+            monstro.atacar(heroi)
+
+    if heroi.esta_vivo():
+        print(f"{heroi.nome} venceu e ganhou {monstro.exp_recompensa} XP!")
+        heroi.ganhar_experiencia(monstro.exp_recompensa)
+    else:
+        print(f"{heroi.nome} foi derrotado...")
+
