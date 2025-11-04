@@ -64,3 +64,17 @@ for inimigo in inimigos:
         elif escolha == "3":
             status()
             continue
+        
+        else:
+            print("Escolha inválida!")
+
+    if heroi.esta_vivo():
+        print(f"\n✅ {heroi.nome} derrotou o {inimigo.nome}!")
+        heroi.ganhar_experiencia(50)
+    else:
+        print(f"\n❌ {heroi.nome} foi derrotado... Fim da aventura 😢")
+        break
+
+if heroi.esta_vivo():
+    print("\n🎉 PARABÉNS! Você derrotou todos os inimigos e terminou o jogo!\n")
+
