@@ -126,9 +126,12 @@ class Heroi(Personagem):
 # MONSTRO
 # -------------------------
 class Monstro(Personagem):
-    def __init__(self, nome, tipo):
+    def __init__(self, nome, tipo, nivel_heroi):
         config = CONFIG_MONSTROS[tipo]
-        super().__init__(nome, config["vida"], config["ataque"], config["defesa"])
+        vida = config["vida"] + (nivel_heroi - 1) * 10
+        ataque = config["ataque"] + (nivel_heroi - 1) * 2
+        defesa = config["defesa"] + (nivel_heroi - 1)
+        super().__init__(nome, vida, ataque, defesa)
         self.tipo = tipo
         self.exp_recompensa = config["exp_recompensa"]
         self.chance_loot = config["chance_loot"]
@@ -146,7 +149,6 @@ class Monstro(Personagem):
                     Pocao("Poção Forte", "Restaura 40 de vida", 40)
                 ])
         return None
-
 
 # -------------------------
 # MENU DE BATALHA
