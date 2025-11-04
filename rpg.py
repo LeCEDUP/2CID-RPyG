@@ -168,3 +168,18 @@ def jogo():
                     print("Ação inválida!")
                     continue
 
+            # Ataque do inimigo
+                if vida_inimigo > 0:
+                    print(f"\n{name_format(nome_inimigo)} ruge e avança!")
+                    if random.random() < evasao:
+                        print("Você esquivou por pouco! 💨")
+                    else:
+                        dano_inimigo = random.randint(4, 9)
+                        if acao == "d":
+                            dano_inimigo = int(dano_inimigo * (1 - defesa))
+                            print("Sua defesa reduziu parte do dano!")
+                        vida_jogador -= dano_inimigo
+                        print(f"A aberração causou {dano_inimigo} de dano!")
+                        if random.random() < 0.2:
+                            print("Seu corpo arrepia... algo sussurra em sua mente.")
+                            sanidade -= random.randint(5, 10)
