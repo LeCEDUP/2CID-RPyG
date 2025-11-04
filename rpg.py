@@ -103,5 +103,14 @@ def jogo():
                             dano += random.randint(3, 5)
                             print("Ataque preciso! Você atingiu um ponto vital!")
                     print(f"Você causou {dano} de dano!")
+                elif classe == "2":  # Ocultista
+                    if random.random() < 0.25:
+                        dano = random.randint(8, 12)
+                        print("Você canaliza energia paranormal! 🔮")
+                        sanidade -= random.randint(5, 10)
+                    else:
+                        dano = random.randint(4, 7)
+                        print("Você lança um feitiço menor.")
+                    print(f"Você causou {dano} de dano!")
 
 
