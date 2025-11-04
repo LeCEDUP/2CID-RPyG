@@ -132,3 +132,13 @@ def jogo():
                     sanidade -= dano_mental
                     print(f"Sua mente treme... perdeu {dano_mental}% de sanidade!")
 
+            # Cura
+
+                elif acao == "c":
+                    if inventario["poções"] > 0:
+                        cura = random.randint(5, 10)
+                        vida_jogador += cura
+                        inventario["poções"] -= 1
+                        print(f"Você usou um kit médico e recuperou {cura} de vida!")
+                    else:
+                        print("Você não tem mais poções!")
