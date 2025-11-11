@@ -372,4 +372,9 @@ def jogo():
             print("Opção inválida.")
             pause()
 
+            # -------------------- RODAR --------------------
+if __name__=="__main__":
+    jogo()
+
+
     
