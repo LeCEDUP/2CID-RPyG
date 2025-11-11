@@ -113,3 +113,4 @@ else:
     print("O equilíbrio do multiverso foi restaurado... por agora.")
 
 print("\n--- FIM DA AVENTURA ---")
+
