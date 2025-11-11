@@ -240,7 +240,7 @@ def contar_lore(lore):
     slow(lore, 0.03)
     sep("=")
     pause()
-    
+
     # -------------------- JOGO --------------------
 def jogo():
     sep('=')
@@ -264,6 +264,112 @@ def jogo():
     moch.moras = 100
     moch.add_heroi(viajante)
     heroi_ativo = viajante
+# -------------------- MISSÕES --------------------
+    missoes = [
+        ("Floresta do Vento","Um Slime Anemo aparece!", lambda: Monstro("Slime Anemo",60,10,5,"Anemo",30),50),
+        ("Caverna Flamejante","Você enfrenta um Pyro Hilichurl!", lambda: Monstro("Hilichurl Pyro",70,14,6,"Pyro",40),70),
+        ("Lago das Marés","Um monstro Hydro surge das águas!", lambda: Monstro("Slime Hydro",80,15,7,"Hydro",50),80),
+        ("Templo Estático","Relâmpagos cortam o céu!", lambda: Monstro("Hilichurl Electro",90,17,8,"Electro",60),90),
+        ("Planalto Congelado","Você pisa em gelo quebradiço...", lambda: Monstro("Slime Cryo",100,18,9,"Cryo",70),100),
+        ("Montanha Dourada","Tremores sacodem o solo!", lambda: Monstro("Guardião Geo",110,19,10,"Geo",80),110),
+        ("Floresta Selvagem","Raízes emergem do chão!", lambda: Monstro("Slime Dendro",120,20,11,"Dendro",90),120),
+        ("Vale das Tempestades","O vento ruge em fúria...", lambda: Monstro("Anemo Elite",130,21,12,"Anemo",100),140),
+        ("Portão de Celestia","O ar vibra com poder divino...", lambda: Monstro("Guardião Celestial",150,22,13,"Luz",120),160)
+    ]
 
+    while True:
+        sep('=')
+        print("🌟 MENU PRINCIPAL 🌟")
+        print(f"👤 Ativo: {heroi_ativo.status()}")
+        print(f"💰 Moras: {moch.moras} | 🍲 Comidas: {len(moch.itens)} | 🧭 Heróis: {len(moch.herois)}")
+        sep()
+        print("1️⃣ Ver Missões\n2️⃣ Mochila/Heróis\n3️⃣ Cozinhar 🍳\n4️⃣ Trocar Herói 🔄\n5️⃣ Iniciar Missão ⚔️\n6️⃣ Enfrentar Boss 👑\n7️⃣ Sair 🚪")
+        sep()
+        op = input("Escolha: ")
+
+        if op=="1":
+            for i,m in enumerate(missoes,1):
+                print(f"{i}. {m[0]} — {m[1]}")
+            pause()
+
+        elif op=="2":
+            moch.listar_herois()
+            moch.listar_itens()
+            pause()
+
+        elif op=="3":
+            comidas = [{"nome":"Frango Frito 🍗","cura":30,"custo":20},{"nome":"Bolo de Lótus 🍰","cura":60,"custo":50},{"nome":"Teyvat Deluxe 🥘","cura":120,"custo":90}]
+            print("🍳 COZINHAR — Escolha um prato:")
+            for i,c in enumerate(comidas,1):
+                print(f"{i} - {c['nome']} (+{c['cura']}❤️, {c['custo']} moras)")
+            esc = input("→ ")
+            if esc.isdigit() and 1<=int(esc)<=len(comidas):
+                c = comidas[int(esc)-1]
+                if moch.moras>=c["custo"]:
+                    moch.moras-=c["custo"]
+                    moch.add_item(c)
+                    print(f"{c['nome']} adicionado à mochila!")
+                else:
+                    print("💸 Moras insuficientes.")
+            else:
+                print("Escolha inválida.")
+            pause()
+
+        elif op=="4":
+            moch.listar_herois()
+            esc = input("Trocar para qual herói? ")
+            if esc.isdigit() and 1<=int(esc)<=len(moch.herois):
+                heroi_ativo = moch.herois[int(esc)-1]
+                print(f"{heroi_ativo.apelido} agora é o ativo.")
+            pause()
+
+        elif op=="5":
+            if not missoes:
+                print("Todas as missões concluídas!")
+                pause()
+                continue
+            for i,m in enumerate(missoes,1):
+                print(f"{i}. {m[0]}")
+            esc = input("→ ")
+            if esc.isdigit() and 1<=int(esc)<=len(missoes):
+                nome,desc,mf,recompensa = missoes.pop(int(esc)-1)
+                sep()
+                slow(f"Iniciando {nome}...",0.03)
+                slow(desc,0.03)
+                sep()
+                mon = mf()
+                if combate(heroi_ativo,mon,moch):
+                    moch.moras+=recompensa
+                    print(f"💰 Você ganhou {recompensa} moras!")
+                    # Sorteio de novo herói
+                    if len(moch.herois)<8:
+                        elementos=["Hu Tao","Furina","Raiden","Kaeya","Zhongli","Nahida","Venti"]
+                        novo_elem=elementos[len(moch.herois)-1]
+                        novo = criar_heroi(novo_elem,novo_elem)
+                        moch.add_heroi(novo)
+                        print(f"🎉 {novo.nome} se juntou à equipe!")
+
+            pause()
+
+        elif op=="6":
+            if missoes:
+                print("Conclua todas as 9 missões para liberar Celestia! 👑")
+                pause()
+                continue
+            slow("O céu se rasga. Uma deusa colossal desperta: CELESTIA!",0.03)
+            boss = Celestia()
+            combate(heroi_ativo,boss,moch)
+            if not boss.vivo():
+                slow("🌌 Com a queda da deusa, a luz retorna a Teyvat.",0.03)
+                slow(f"{apelido} reencontra seu irmão, selando o destino dos dois gêmeos.",0.03)
+            pause()
+
+        elif op=="7":
+            print("Até a próxima jornada!")
+            break
+
+        else:
+            print("Opção inválida.")
+            pause()
 
     
