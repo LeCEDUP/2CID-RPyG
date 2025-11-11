@@ -1,9 +1,16 @@
+import requests
 from itens.item import Item
 from itens.arma import Arma
 from itens.armadura import Armadura
 from personagens.heroi import Heroi
 from personagens.monstro import Monstro
 
+def fetchPokemon(endpoint):
+    URL = 'https://pokeapi.co/api/v2/pokemon/'
+    pokemon = requests.get(URL + endpoint)
+    pokemon = pokemon.json()
+
+    print(pokemon['sprites'])
 
 # Criando personagens
 heroi = Heroi("Arthur", 100, 15, 5)
