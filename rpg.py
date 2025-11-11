@@ -210,3 +210,36 @@ def combate(heroi, inimigo, moch):
         for h in moch.herois:
             if h.vivo():
                 h.ganhar_exp(getattr(inimigo,'exp',30))
+                 # Baú aleatório
+        if random.random() < 0.7:
+            baus = [{"nome":"Frango Frito 🍗","cura":30},{"nome":"Bolo de Lótus 🍰","cura":60},{"nome":"Teyvat Deluxe 🥘","cura":120}]
+            c = random.choice(baus)
+            moch.add_item(c)
+            print(f"🗝️ Você encontrou um baú e obteve {c['nome']}! (+{c['cura']}❤️)")
+        return True
+    else:
+        slow(f"💀 Todos os heróis foram derrotados...", 0.03)
+        return False
+    # -------------------- HISTÓRIA --------------------
+LORE = """
+Em um universo onde inúmeros mundos florescem e morrem,
+dois gêmeos viajavam através das estrelas.
+
+Eles não pertenciam a nenhum reino,
+mas todos os reinos pertenciam às suas memórias.
+
+Certo dia, ao tentar atravessar um mundo corrompido pela guerra e pela magia,
+uma deusa desconhecida surgiu diante deles.
+
+Com um gesto, ela separou os dois irmãos,
+selando um e lançando o outro nas profundezas do tempo e do espaço...
+"""
+
+def contar_lore(lore):
+    sep("=")
+    slow(lore, 0.03)
+    sep("=")
+    pause()
+    
+
+    
