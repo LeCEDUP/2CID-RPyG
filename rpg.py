@@ -240,6 +240,30 @@ def contar_lore(lore):
     slow(lore, 0.03)
     sep("=")
     pause()
+    
+    # -------------------- JOGO --------------------
+def jogo():
+    sep('=')
+    slow("✨ TEYVAT — DESTINOS ENTRELACADOS ✨",0.03)
+    sep('=')
+    contar_lore(LORE)
+
+    print("Escolha seu gêmeo inicial:")
+    print("1 - Aether (♂)\n2 - Lumine (♀)")
+    escolha = input("→ ")
+    gemeo = "Aether" if escolha=="1" else "Lumine"
+    apelido = input("Digite o nome do viajante: ").strip() or "Viajante"
+
+    poderes = [Poder("Ataque Rápido",10,1), Poder("Rajada de Luz",20,2), Poder("Golpe Celestial",35,4)]
+    viajante = Heroi(gemeo, "Anemo", apelido, 120, 20, 10, poderes)
+
+    slow(f"\n✨ {apelido} desperta em Teyvat... buscando o reencontro com {'Aether' if gemeo=='Lumine' else 'Lumine'}.",0.03)
+    pause()
+
+    moch = Mochila()
+    moch.moras = 100
+    moch.add_heroi(viajante)
+    heroi_ativo = viajante
 
 
     
