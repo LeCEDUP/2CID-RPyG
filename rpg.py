@@ -220,7 +220,7 @@ def combate(heroi, inimigo, moch):
     else:
         slow(f"💀 Todos os heróis foram derrotados...", 0.03)
         return False
-    # -------------------- HISTÓRIA --------------------
+ # -------------------- HISTÓRIA --------------------
 LORE = """
 Em um universo onde inúmeros mundos florescem e morrem,
 dois gêmeos viajavam através das estrelas.
@@ -240,6 +240,6 @@ def contar_lore(lore):
     slow(lore, 0.03)
     sep("=")
     pause()
-    
+
 
     
