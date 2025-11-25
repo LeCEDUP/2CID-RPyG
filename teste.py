@@ -1,14 +1,43 @@
+import requests
+from random import choice 
 from itens.item import Item
 from itens.arma import Arma
 from itens.armadura import Armadura
 from personagens.heroi import Heroi
 from personagens.monstro import Monstro
 
+def fetchPokemon(endpoint):
+    URL = f'https://pokeapi.co/api/v2/pokemon/{endpoint}'
+    pokemon = requests.get(URL)
+
+    if pokemon.status_code == 200:
+        pokemon = pokemon.json()
+        if endpoint[0] == '?':
+            return pokemon
+
+        nome = pokemon['name'][0].upper() + pokemon['name'][1::]
+        hp = pokemon['stats'][0]['base_stat']
+        atk = pokemon['stats'][1]['base_stat']
+        dfs = pokemon['stats'][2]['base_stat']
+        tipo = pokemon['types'][0]['type']['name']
+
+        return [nome, hp, atk, dfs, tipo]
+    else:
+        print(f'Error fetching pokemon - status code: {pokemon.status_code}')
+        return ['Pikachu', 100, 50, 25, 'thunder']
+        
+
+listaFetch = fetchPokemon('?limit=151')
+
+listaPokemon = []
+
+for pokemon in listaFetch['results']:
+    listaPokemon.append(pokemon['name'])
 
 # Criando personagens
-heroi = Heroi("Arthur", 100, 15, 5)
-goblin = Monstro("Goblin", 30, 8, 2, "Pequeno")
-dragao = Monstro("Dragão", 200, 30, 10, "Grande")
+heroi = Heroi("Arthur", 100, 71, 59)
+goblin = Monstro(*fetchPokemon(choice(listaPokemon)))
+dragao = Monstro(*fetchPokemon(choice(listaPokemon)))
 
 # Criando itens
 espada = Arma("Espada Longa", "Uma espada afiada.", 10)
@@ -27,7 +56,7 @@ print(f"{heroi.nome} encontrou uma {espada.nome}, um {escudo.nome} e uma {pocao_
 heroi.equipar_item(espada)
 heroi.equipar_item(escudo)
 
-print("\n--- Batalha contra o Goblin ---")
+print(f"\n--- Batalha contra o {goblin.nome} ---")
 while heroi.esta_vivo() and goblin.esta_vivo():
     heroi.atacar(goblin)
     if goblin.esta_vivo():
@@ -45,7 +74,7 @@ if pocao_vida in heroi.inventario:
     heroi.inventario.remove(pocao_vida)
     print(f"{heroi.nome} usou {pocao_vida.nome}. Vida atual: {heroi.vida}")
 
-print("\n--- Batalha contra o Dragão (Desafio Final) ---")
+print(f"\n--- Batalha contra o {dragao.nome} (Desafio Final) ---")
 while heroi.esta_vivo() and dragao.esta_vivo():
     heroi.atacar(dragao)
     if dragao.esta_vivo():
