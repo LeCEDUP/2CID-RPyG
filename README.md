@@ -158,3 +158,4 @@ Para aprofundar seu conhecimento em POO e praticar o fluxo de trabalho Git/GitHu
 3.  **Tipos de Dano/Defesa**: Adicione tipos de dano (físico, mágico, fogo, gelo) e resistências/fraquezas aos personagens. O cálculo de dano poderia levar isso em consideração.
 4.  **Classes de Herói**: Crie subclasses de `Heroi` como `Guerreiro`, `Mago` e `Arqueiro`, cada uma com atributos iniciais e habilidades únicas.
 5.  **Persistência de Dados**: Salve o estado do herói (vida, nível, inventário) em um arquivo (JSON, CSV ou um formato simples) para que o jogo possa ser continuado mais tarde.
+Feito por Erik Willian - Turma 2CID
